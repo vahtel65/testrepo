@@ -1,0 +1,2 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="CallbackMaster.master.cs" Inherits="Aspect.UI.Web.Callback.CallbackMaster" %>
+<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>

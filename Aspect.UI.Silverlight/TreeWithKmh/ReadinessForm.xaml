@@ -1,0 +1,36 @@
+﻿<controls:ChildWindow x:Class="TreeWithKmh.ReadinessForm"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+           Width="400" Height="300" 
+           Title="Форма проставления готовностей" Loaded="ChildWindow_Loaded">
+    <controls:ChildWindow.Resources>
+        <Style x:Key="BoldOpacity" TargetType="toolkit:BusyIndicator">
+            <Setter Property="OverlayStyle">
+                <Setter.Value>
+                    <Style TargetType="Rectangle">
+                        <Setter Property="Fill" Value="Black"/>
+                        <Setter Property="Opacity" Value="0.45"/>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </controls:ChildWindow.Resources>
+    <toolkit:BusyIndicator x:Name="LayoutRoot" Margin="2"  IsBusy="False" Style="{StaticResource BoldOpacity}" BusyContent="Загрузка готовностей...">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel Background="White" Orientation="Vertical">
+                <TextBlock Name="ProductPn1" Text="Some product Pn1" FontSize="20" Margin="10"/>
+                <CheckBox Name="chkTechnDate"  Margin="5" Content="Технолога готовность" />
+                <CheckBox Name="chkHimDate" Margin="5" Content="Химика готовность" />
+                <CheckBox Name="chkSvarDate" Margin="5" Content="Сварщика готовность" />
+            </StackPanel>
+            <Button x:Name="CancelButton" Background="Red" Content="Отмена" Click="CancelButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,10,0,0" Grid.Row="1" />
+            <Button x:Name="OKButton" Background="Green" Content="Применить" Click="OKButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,10,79,0" Grid.Row="1" />
+        </Grid>
+    </toolkit:BusyIndicator>
+</controls:ChildWindow>

@@ -1,0 +1,111 @@
+﻿<UserControl x:Class="TreeWithKmh.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"             
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
+    xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+    xmlns:jib="clr-namespace:Jib.Controls.DataGrid;assembly=Jib.Controls"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    xmlns:datagrid="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+    xmlns:TreeWithKmh="clr-namespace:TreeWithKmh"     
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+    <UserControl.Resources>
+        <Style x:Key="BoldOpacity" TargetType="toolkit:BusyIndicator">
+            <Setter Property="OverlayStyle">
+                <Setter.Value>
+                    <Style TargetType="Rectangle">
+                        <Setter Property="Fill" Value="Black"/>
+                        <Setter Property="Opacity" Value="0.75"/>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>    
+   
+    <toolkit:BusyIndicator Style="{StaticResource BoldOpacity}" IsBusy="False" x:Name="LayoutRoot" BusyContent="Загрузка меню...">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="42"/>
+                <RowDefinition Height="38"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStopCollection>
+                            <GradientStop Offset="0.0" Color="#FFFFFF"/>
+                            <GradientStop Offset="1.0" Color="#F0F0F0"/>
+                        </GradientStopCollection>
+                    </LinearGradientBrush>
+                </Grid.Background>                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center" >
+                    <Button ToolTipService.ToolTip="Изменить маршрут по применяемости" Background="Transparent" BorderBrush="Transparent" BorderThickness="0"  Margin="1 0 3 0" Click="ShowSelectorWindow">
+                        <Image Opacity="1" Source="/TreeWithKmh;component/image/route.png" Stretch="None" />
+                    </Button>
+                    <Button ToolTipService.ToolTip="Маршруты по применяемости" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="0 0 3 0" Click="RouteByApplicability">
+                        <Image Source="/TreeWithKmh;component/image/route_adv.png" Stretch="None" />
+                    </Button>
+                    <Button ToolTipService.ToolTip="Настройка колонок" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="0 0 3 0" Click="ShowColumnsSelector">
+                        <Image Source="/TreeWithKmh;component/image/clm_order.png" Stretch="None"  />
+                    </Button>                    
+                    <Button ToolTipService.ToolTip="Проставить готовности" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="0 0 3 0" Click="ShowReadinessForm">
+                        <Image Source="/TreeWithKmh;component/image/iconReadiness.png" Stretch="None"  />
+                    </Button>
+                    <StackPanel x:Name="DevButtons" Visibility="Collapsed" Orientation="Horizontal" Margin="7">
+                        <TextBlock Text="Product.ID:" Margin="4" />
+                        <TextBox Width="200" Name="dbg_product_id" Text="02D5DF4E-EEB8-4EE8-AB4C-15B0A1BD4643" />
+
+                        <TextBlock Text="OrderArticle.ID:" Margin="4" />
+                        <TextBox Width="200" Name="dbg_order_id" Text="D38601AA-270D-4D21-A4ED-20CBEB964CAA" />
+
+                        <Button Content="Сгенерировать даты" Click="GenerateDatesForOrder" />
+                    </StackPanel>                    
+                </StackPanel>                
+            </Grid>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right"  VerticalAlignment="Center">
+                <TextBlock Margin="0 0 10 0" x:Name="ProductInfo" FontSize="12">Разузлованный состав !!!!ВСПК.00.00.000КМОЧ не применять/Комплект монтажных частей (Версия 1)</TextBlock>
+            </StackPanel>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <sdk:DataPager DisplayMode="FirstLastPreviousNextNumeric" HorizontalContentAlignment="Center" x:Name="myPager" Source="{Binding Path=ItemsSource, ElementName=grid}" PageSize="20" NumericButtonCount="40" Margin="1,0,-1,0" />
+                <Button Grid.Column="1" Width="8"  Click="btnShowDevButtons"/>
+            </Grid>
+            
+            <toolkit:BusyIndicator x:Name="MainGridBusy"  Grid.Row="2" IsBusy="True" BusyContent="Загрузка словарей...">
+                <jib:JibGrid FrozenColumnCount="2" AutoGenerateColumns="False" x:Name="grid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <sdk:DataGrid.Columns>
+                        <sdk:DataGridTemplateColumn CanUserResize="False" CanUserReorder="False" Width="32">
+                            <sdk:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Tag="{Binding prod_id}" Click="openProductMenu" Margin="3" Width="24">
+                                        <Image Source="image/edit.png" Stretch="None" />
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip Content="Меню действий" />
+                                        </ToolTipService.ToolTip>
+                                    </Button>
+                                </DataTemplate>
+                            </sdk:DataGridTemplateColumn.CellTemplate>
+                        </sdk:DataGridTemplateColumn>
+                        <datagrid:DataGridTemplateColumn CanUserReorder="False" CanUserResize="False" Width="32">
+                            <datagrid:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Margin="3" Width="24" Click="createNewKmh" Tag="{Binding prod_id}">
+                                        <Image Source="image/kmhcard.png" Stretch="None" />
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip Content="Редактировать/Смотреть КМХ" />
+                                        </ToolTipService.ToolTip>
+                                    </Button>
+                                </DataTemplate>
+                            </datagrid:DataGridTemplateColumn.CellTemplate>
+                        </datagrid:DataGridTemplateColumn>
+                    </sdk:DataGrid.Columns>
+                </jib:JibGrid>
+            </toolkit:BusyIndicator>
+        </Grid>
+    </toolkit:BusyIndicator>
+</UserControl>

@@ -1,0 +1,36 @@
+﻿<controls:ChildWindow x:Class="EditorKmh.KmhOrderApplicability"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+           xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+           xmlns:jib="clr-namespace:Jib.Controls.DataGrid;assembly=Jib.Controls"
+           xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+           xmlns:EditorKmh="clr-namespace:EditorKmh"
+           Width="500" Height="300" 
+           Title="Применяемость КМХ в других приказах в качестве стандартной">
+    <controls:ChildWindow.Resources>
+        <EditorKmh:BoolToVisibilityConverter x:Key="InverseBool" TrueValue="true" FalseValue="false" />
+        <EditorKmh:ImportanceColorConverter x:Key="ColorConverter"  />
+    </controls:ChildWindow.Resources>
+    <Grid x:Name="LayoutRoot" Margin="2">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <jib:JibGrid Grid.Row="0" AutoGenerateColumns="False" x:Name="grid">
+            <sdk:DataGrid.Columns>
+                <sdk:DataGridTemplateColumn CanUserResize="False" CanUserReorder="False" Width="32">
+                    <sdk:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsEnabled="{Binding exists_orderkmh, Converter={StaticResource InverseBool}}" IsChecked="{Binding ischecked}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" />
+                        </DataTemplate>
+                    </sdk:DataGridTemplateColumn.CellTemplate>
+                </sdk:DataGridTemplateColumn>
+                <sdk:DataGridTextColumn Binding ="{Binding year}" Header="Год приказа"></sdk:DataGridTextColumn>
+                <sdk:DataGridTextColumn Binding="{Binding cco}" Header="Номер приказа"></sdk:DataGridTextColumn>
+                <sdk:DataGridTextColumn Binding="{Binding created}" Header="Дата формирования"></sdk:DataGridTextColumn>
+            </sdk:DataGrid.Columns>
+        </jib:JibGrid>
+        <Button x:Name="CancelButton" Content="Cancel" Click="CancelButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,0,0" Grid.Row="1" />
+        <Button x:Name="OKButton" Content="OK" Click="OKButton_Click" Width="75" Height="23" HorizontalAlignment="Right" Margin="0,12,79,0" Grid.Row="1" />
+    </Grid>
+</controls:ChildWindow>

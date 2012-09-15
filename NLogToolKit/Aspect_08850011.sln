@@ -1,0 +1,111 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AjaxControlToolKit", "AjaxControlToolKit", "{F91E5616-D93D-4A8D-8500-49A96A78C047}"
+	ProjectSection(SolutionItems) = preProject
+		AjaxControlToolKit\AjaxControlToolkit.dll = AjaxControlToolKit\AjaxControlToolkit.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{47B7D5BE-E044-4D70-B853-0F939FD6D06F}"
+	ProjectSection(SolutionItems) = preProject
+		history.txt = history.txt
+		history2.txt = history2.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OdfToolKit", "OdfToolKit", "{91B36652-C9DD-43D9-9A1D-79F492B71EE2}"
+	ProjectSection(SolutionItems) = preProject
+		OdfToolKit\AODL.dll = OdfToolKit\AODL.dll
+		OdfToolKit\ICSharpCode.SharpZipLib.dll = OdfToolKit\ICSharpCode.SharpZipLib.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspect.Domain", "Aspect.Domain\Aspect.Domain.csproj", "{8472F639-34FC-4BDF-8892-14642DB2E629}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspect.Model", "Aspect.Model\Aspect.Model.csproj", "{69EEF79E-6B83-46E5-ACA1-327A65745C92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspect.UI.Web", "Aspect.UI.Web\Aspect.UI.Web.csproj", "{C0C95EF3-4D28-49F7-AA21-728907EA7272}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BB2C8422-3AF5-46C1-B6CD-DC9A7DEE239F} = {BB2C8422-3AF5-46C1-B6CD-DC9A7DEE239F}
+		{93BD384A-E974-4B53-A662-F9BA0E37C4D1} = {93BD384A-E974-4B53-A662-F9BA0E37C4D1}
+		{7E127053-30A2-414B-84AB-3896245B1F3D} = {7E127053-30A2-414B-84AB-3896245B1F3D}
+		{CA79D5B0-49CE-4283-8307-64DECBA3C570} = {CA79D5B0-49CE-4283-8307-64DECBA3C570}
+		{37CA06E5-D957-4B91-84DC-052B4306F270} = {37CA06E5-D957-4B91-84DC-052B4306F270}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspect.UI.Web.Controls", "Aspect.UI.Web.Controls\Aspect.UI.Web.Controls.csproj", "{8A11A8B5-3878-4315-BBA2-4AE71DF921C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspect.Utility", "Aspect.Utility\Aspect.Utility.csproj", "{E42152C6-6E6E-4050-A86D-EE3B62F996D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Applicability", "Aspect.UI.Silverlight\Applicability\Applicability.csproj", "{BB2C8422-3AF5-46C1-B6CD-DC9A7DEE239F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorKmh", "Aspect.UI.Silverlight\EditorKmh\EditorKmh.csproj", "{37CA06E5-D957-4B91-84DC-052B4306F270}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jib.Controls", "Aspect.UI.Silverlight\Jib.Controls\Jib.Controls.csproj", "{A58F53DD-59C1-49E5-8BCD-5B1B773DE00F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListWares", "Aspect.UI.Silverlight\ListWares\ListWares.csproj", "{7E127053-30A2-414B-84AB-3896245B1F3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeWithKmh", "Aspect.UI.Silverlight\TreeWithKmh\TreeWithKmh.csproj", "{CA79D5B0-49CE-4283-8307-64DECBA3C570}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniGrid", "Aspect.UI.Silverlight\UniGrid\UniGrid.csproj", "{93BD384A-E974-4B53-A662-F9BA0E37C4D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExtNetToolKit", "ExtNetToolKit", "{5FDC212D-F52F-4D35-9FAF-97DDBFD67986}"
+	ProjectSection(SolutionItems) = preProject
+		ExtNetToolKit\Ext.Net.dll = ExtNetToolKit\Ext.Net.dll
+		ExtNetToolKit\Ext.Net.Utilities.dll = ExtNetToolKit\Ext.Net.Utilities.dll
+		ExtNetToolKit\Newtonsoft.Json.dll = ExtNetToolKit\Newtonsoft.Json.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8472F639-34FC-4BDF-8892-14642DB2E629}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8472F639-34FC-4BDF-8892-14642DB2E629}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8472F639-34FC-4BDF-8892-14642DB2E629}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8472F639-34FC-4BDF-8892-14642DB2E629}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69EEF79E-6B83-46E5-ACA1-327A65745C92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69EEF79E-6B83-46E5-ACA1-327A65745C92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69EEF79E-6B83-46E5-ACA1-327A65745C92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69EEF79E-6B83-46E5-ACA1-327A65745C92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0C95EF3-4D28-49F7-AA21-728907EA7272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0C95EF3-4D28-49F7-AA21-728907EA7272}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0C95EF3-4D28-49F7-AA21-728907EA7272}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0C95EF3-4D28-49F7-AA21-728907EA7272}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A11A8B5-3878-4315-BBA2-4AE71DF921C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A11A8B5-3878-4315-BBA2-4AE71DF921C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A11A8B5-3878-4315-BBA2-4AE71DF921C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A11A8B5-3878-4315-BBA2-4AE71DF921C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E42152C6-6E6E-4050-A86D-EE3B62F996D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E42152C6-6E6E-4050-A86D-EE3B62F996D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E42152C6-6E6E-4050-A86D-EE3B62F996D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E42152C6-6E6E-4050-A86D-EE3B62F996D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB2C8422-3AF5-46C1-B6CD-DC9A7DEE239F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB2C8422-3AF5-46C1-B6CD-DC9A7DEE239F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB2C8422-3AF5-46C1-B6CD-DC9A7DEE239F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB2C8422-3AF5-46C1-B6CD-DC9A7DEE239F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37CA06E5-D957-4B91-84DC-052B4306F270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37CA06E5-D957-4B91-84DC-052B4306F270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37CA06E5-D957-4B91-84DC-052B4306F270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37CA06E5-D957-4B91-84DC-052B4306F270}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A58F53DD-59C1-49E5-8BCD-5B1B773DE00F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A58F53DD-59C1-49E5-8BCD-5B1B773DE00F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A58F53DD-59C1-49E5-8BCD-5B1B773DE00F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A58F53DD-59C1-49E5-8BCD-5B1B773DE00F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E127053-30A2-414B-84AB-3896245B1F3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E127053-30A2-414B-84AB-3896245B1F3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E127053-30A2-414B-84AB-3896245B1F3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E127053-30A2-414B-84AB-3896245B1F3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA79D5B0-49CE-4283-8307-64DECBA3C570}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA79D5B0-49CE-4283-8307-64DECBA3C570}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA79D5B0-49CE-4283-8307-64DECBA3C570}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA79D5B0-49CE-4283-8307-64DECBA3C570}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93BD384A-E974-4B53-A662-F9BA0E37C4D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93BD384A-E974-4B53-A662-F9BA0E37C4D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93BD384A-E974-4B53-A662-F9BA0E37C4D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93BD384A-E974-4B53-A662-F9BA0E37C4D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

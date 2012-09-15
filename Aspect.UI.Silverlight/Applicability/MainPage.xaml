@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="Applicability.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:jib="clr-namespace:Jib.Controls.DataGrid;assembly=Jib.Controls"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+    xmlns:datagrid="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+    xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Toolkit"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <Style x:Key="BoldOpacity" TargetType="toolkit:BusyIndicator">
+            <Setter Property="OverlayStyle">
+                <Setter.Value>
+                    <Style TargetType="Rectangle">
+                        <Setter Property="Fill" Value="Black"/>
+                        <Setter Property="Opacity" Value="0.75"/>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <toolkit:BusyIndicator Style="{StaticResource BoldOpacity}" IsBusy="False" x:Name="LayoutRoot" BusyContent="Загрузка меню...">        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="38"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right"  VerticalAlignment="Center">
+                <TextBlock Margin="0 0 10 0" x:Name="ProductInfo" FontSize="12">Название детали</TextBlock>
+            </StackPanel>
+            <sdk:DataPager Grid.Row="2" DisplayMode="FirstLastPreviousNextNumeric" HorizontalContentAlignment="Center" x:Name="myPager" Source="{Binding Path=ItemsSource, ElementName=grid}" PageSize="20"  NumericButtonCount="50" />
+            <toolkit:BusyIndicator x:Name="MainGridBusy"  Grid.Row="1" IsBusy="True" BusyContent="Загрузка применяемости...">
+                <jib:JibGrid FrozenColumnCount="1" AutoGenerateColumns="False" x:Name="grid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <sdk:DataGrid.Columns>
+                        <sdk:DataGridTemplateColumn CanUserResize="False" CanUserReorder="False" Width="32">
+                            <sdk:DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Tag="{Binding prod_id}" Click="openProductMenu" Margin="3" Width="24">
+                                        <Image Source="image/edit.png" Stretch="None" />
+                                        <ToolTipService.ToolTip>
+                                            <ToolTip Content="Меню действий" />
+                                        </ToolTipService.ToolTip>
+                                    </Button>
+                                </DataTemplate>
+                            </sdk:DataGridTemplateColumn.CellTemplate>
+                        </sdk:DataGridTemplateColumn>
+                    </sdk:DataGrid.Columns>
+                </jib:JibGrid>
+            </toolkit:BusyIndicator>        
+        </Grid>
+    </toolkit:BusyIndicator>
+</UserControl>

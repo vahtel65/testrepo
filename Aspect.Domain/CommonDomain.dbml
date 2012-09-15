@@ -1,0 +1,653 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="aspect" Class="CommonDomain" Serialization="Unidirectional" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="" Member="TreeViewResults">
+    <Type Name="TreeViewResult" Id="ID1">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Level" Type="System.Int32" DbType="Int" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ClassificationTree" Member="ClassificationTrees">
+    <Type Name="ClassificationTree">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ParentID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Image" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="cod_Asp" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ClassificationTree_ClassificationTree" Member="ClassificationTrees" ThisKey="ID" OtherKey="ParentID" Type="ClassificationTree" />
+      <Association Name="ClassificationTree_ClassificationTreeProduct" Member="ClassificationTreeProducts" ThisKey="ID" OtherKey="ClassificationTreeID" Type="ClassificationTreeProduct" />
+      <Association Name="ClassificationTree_CustomClassificationTree" Member="CustomClassificationTrees" ThisKey="ID" OtherKey="ClassificationTreeID" Type="CustomClassificationTree" />
+      <Association Name="ClassificationTree_ClassificationTree" Member="ClassificationTree1" ThisKey="ParentID" OtherKey="ID" Type="ClassificationTree" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RoleViewPermission" Member="RoleViewPermissions">
+    <Type Name="RoleViewPermission">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PermissionEntityID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="[Read]" Member="Read" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Modify" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="[Delete]" Member="Delete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="EntityID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="PermissionEntity_RoleViewPermission" Member="PermissionEntity" ThisKey="PermissionEntityID" OtherKey="ID" Type="PermissionEntity" IsForeignKey="true" />
+      <Association Name="Role_RoleViewPermission" Member="Role" ThisKey="RoleID" OtherKey="ID" Type="Role" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ClassificationTreeProduct" Member="ClassificationTreeProducts">
+    <Type Name="ClassificationTreeProduct">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProductID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ClassificationTreeID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="ClassificationTree_ClassificationTreeProduct" Member="ClassificationTree" ThisKey="ClassificationTreeID" OtherKey="ID" Type="ClassificationTree" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Product_ClassificationTreeProduct" Member="Product" ThisKey="ProductID" OtherKey="ID" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ConfigurationUserField" Member="ConfigurationUserFields">
+    <Type Name="ConfigurationUserField">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DictionaryTreeID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DcitionaryPropertyID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FieldPlaceHolderID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FormGridViewID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FieldPlaceHolder_ConfigurationUserField" Member="FieldPlaceHolder" ThisKey="FieldPlaceHolderID" OtherKey="ID" Type="FieldPlaceHolder" IsForeignKey="true" />
+      <Association Name="FormGridView_ConfigurationUserField" Member="FormGridView" ThisKey="FormGridViewID" OtherKey="ID" Type="FormGridView" IsForeignKey="true" />
+      <Association Name="User_ConfigurationUserField" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+      <Association Name="DictionaryProperty_ConfigurationUserField" Member="DictionaryProperty" ThisKey="DcitionaryPropertyID" OtherKey="ID" Type="DictionaryProperty" IsForeignKey="true" />
+      <Association Name="DictionaryTree_ConfigurationUserField" Member="DictionaryTree" ThisKey="DictionaryTreeID" OtherKey="ID" Type="DictionaryTree" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ConfigurationUserProperty" Member="ConfigurationUserProperties">
+    <Type Name="ConfigurationUserProperty">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PropertyID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FieldPlaceHolderID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FormGridViewID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FieldPlaceHolder_ConfigurationUserProperty" Member="FieldPlaceHolder" ThisKey="FieldPlaceHolderID" OtherKey="ID" Type="FieldPlaceHolder" IsForeignKey="true" />
+      <Association Name="FormGridView_ConfigurationUserProperty" Member="FormGridView" ThisKey="FormGridViewID" OtherKey="ID" Type="FormGridView" IsForeignKey="true" />
+      <Association Name="Property_ConfigurationUserProperty" Member="Property" ThisKey="PropertyID" OtherKey="ID" Type="Property" IsForeignKey="true" />
+      <Association Name="User_ConfigurationUserProperty" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomClassificationNode" Member="CustomClassificationNodes">
+    <Type Name="CustomClassificationNode">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Association Name="CustomClassificationNode_CustomClassificationNodeProduct" Member="CustomClassificationNodeProducts" ThisKey="ID" OtherKey="CustomClassificationNodeID" Type="CustomClassificationNodeProduct" />
+      <Association Name="CustomClassificationNode_CustomClassificationTree" Member="CustomClassificationTrees" ThisKey="ID" OtherKey="CustomClassificationNodeID" Type="CustomClassificationTree" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomClassificationNodeProduct" Member="CustomClassificationNodeProducts">
+    <Type Name="CustomClassificationNodeProduct">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CustomClassificationNodeID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ProductID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="CustomClassificationNode_CustomClassificationNodeProduct" Member="CustomClassificationNode" ThisKey="CustomClassificationNodeID" OtherKey="ID" Type="CustomClassificationNode" IsForeignKey="true" />
+      <Association Name="Product_CustomClassificationNodeProduct" Member="Product" ThisKey="ProductID" OtherKey="ID" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomClassificationTree" Member="CustomClassificationTrees">
+    <Type Name="CustomClassificationTree">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ParentID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ClassificationTreeID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CustomClassificationNodeID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="CustomClassificationTree_CustomClassificationTree" Member="CustomClassificationTrees" ThisKey="ID" OtherKey="ParentID" Type="CustomClassificationTree" />
+      <Association Name="ClassificationTree_CustomClassificationTree" Member="ClassificationTree" ThisKey="ClassificationTreeID" OtherKey="ID" Type="ClassificationTree" IsForeignKey="true" />
+      <Association Name="CustomClassificationNode_CustomClassificationTree" Member="CustomClassificationNode" ThisKey="CustomClassificationNodeID" OtherKey="ID" Type="CustomClassificationNode" IsForeignKey="true" />
+      <Association Name="CustomClassificationTree_CustomClassificationTree" Member="CustomClassificationTree1" ThisKey="ParentID" OtherKey="ID" Type="CustomClassificationTree" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Dictionary" Member="Dictionaries">
+    <Type Name="Dictionary">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TableName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IdentifierField" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Dictionary_DictionaryProperty" Member="DictionaryProperties" ThisKey="ID" OtherKey="DictionaryID" Type="DictionaryProperty" />
+      <Association Name="Dictionary_DictionaryTree" Member="DictionaryTrees" ThisKey="ID" OtherKey="DictionaryID" Type="DictionaryTree" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DictionaryUserField" Member="DictionaryUserFields">
+    <Type Name="DictionaryUserField">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DictionaryTreeID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DictionaryTreeNodeID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DcitionaryPropertyID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FieldPlaceHolderID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FieldPlaceHolder_DictionaryUserField" Member="FieldPlaceHolder" ThisKey="FieldPlaceHolderID" OtherKey="ID" Type="FieldPlaceHolder" IsForeignKey="true" />
+      <Association Name="User_DictionaryUserField" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+      <Association Name="DictionaryProperty_DictionaryUserField" Member="DictionaryProperty" ThisKey="DcitionaryPropertyID" OtherKey="ID" Type="DictionaryProperty" IsForeignKey="true" />
+      <Association Name="DictionaryTree_DictionaryUserField" Member="DictionaryTree" ThisKey="DictionaryTreeID" OtherKey="ID" Type="DictionaryTree" IsForeignKey="true" />
+      <Association Name="DictionaryTree_DictionaryUserField1" Member="DictionaryTree1" ThisKey="DictionaryTreeNodeID" OtherKey="ID" Type="DictionaryTree" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FieldPlaceHolder" Member="FieldPlaceHolders">
+    <Type Name="FieldPlaceHolder">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="FieldPlaceHolder_ConfigurationUserField" Member="ConfigurationUserFields" ThisKey="ID" OtherKey="FieldPlaceHolderID" Type="ConfigurationUserField" />
+      <Association Name="FieldPlaceHolder_ConfigurationUserProperty" Member="ConfigurationUserProperties" ThisKey="ID" OtherKey="FieldPlaceHolderID" Type="ConfigurationUserProperty" />
+      <Association Name="FieldPlaceHolder_DictionaryUserField" Member="DictionaryUserFields" ThisKey="ID" OtherKey="FieldPlaceHolderID" Type="DictionaryUserField" />
+      <Association Name="FieldPlaceHolder_UserField" Member="UserFields" ThisKey="ID" OtherKey="FieldPlaceHolderID" Type="UserField" />
+      <Association Name="FieldPlaceHolder_UserProperty" Member="UserProperties" ThisKey="ID" OtherKey="FieldPlaceHolderID" Type="UserProperty" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FormGridView" Member="FormGridViews">
+    <Type Name="FormGridView">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="FormGridView_ConfigurationUserField" Member="ConfigurationUserFields" ThisKey="ID" OtherKey="FormGridViewID" Type="ConfigurationUserField" />
+      <Association Name="FormGridView_ConfigurationUserProperty" Member="ConfigurationUserProperties" ThisKey="ID" OtherKey="FormGridViewID" Type="ConfigurationUserProperty" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PermissionEntity" Member="PermissionEntities">
+    <Type Name="PermissionEntity">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="PermissionEntity_RoleViewPermission" Member="RoleViewPermissions" ThisKey="ID" OtherKey="PermissionEntityID" Type="RoleViewPermission" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProductProperty" Member="ProductProperties">
+    <Type Name="ProductProperty">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProductID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PropertyID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(300) NOT NULL" CanBeNull="false" />
+      <Association Name="Property_ProductProperty" Member="Property" ThisKey="PropertyID" OtherKey="ID" Type="Property" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Product_ProductProperty" Member="Product" ThisKey="ProductID" OtherKey="ID" Type="Product" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Property" Member="Properties">
+    <Type Name="Property">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TypeID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Alias" Type="System.String" DbType="NVarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="ClassificationTreeID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CustomClassificationNodeID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ClassificationID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Caption" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Property_ConfigurationUserProperty" Member="ConfigurationUserProperties" ThisKey="ID" OtherKey="PropertyID" Type="ConfigurationUserProperty" />
+      <Association Name="Property_ProductProperty" Member="ProductProperties" ThisKey="ID" OtherKey="PropertyID" Type="ProductProperty" />
+      <Association Name="Property_UserProperty" Member="UserProperties" ThisKey="ID" OtherKey="PropertyID" Type="UserProperty" />
+      <Association Name="Type_Property" Member="Type" ThisKey="TypeID" OtherKey="ID" Type="Type" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Role" Member="Roles">
+    <Type Name="Role">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Role_RoleViewPermission" Member="RoleViewPermissions" ThisKey="ID" OtherKey="RoleID" Type="RoleViewPermission" />
+      <Association Name="Role_UserRole" Member="UserRoles" ThisKey="ID" OtherKey="RoleID" Type="UserRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_dictHS]" Member="_dictHs">
+    <Type Name="_dictH">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cod_old" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="hso" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="hsn1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="hsn2" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="cod_Asp" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="_dictH__dictNomen" Member="_dictNomens" ThisKey="ID" OtherKey="_dictHSID" Type="_dictNomen" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Type" Member="Types">
+    <Type Name="Type">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Type_Property" Member="Properties" ThisKey="ID" OtherKey="TypeID" Type="Property" />
+      <Association Name="Type_DictionaryProperty" Member="DictionaryProperties" ThisKey="ID" OtherKey="TypeID" Type="DictionaryProperty" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="User_ConfigurationUserField" Member="ConfigurationUserFields" ThisKey="ID" OtherKey="UserID" Type="ConfigurationUserField" />
+      <Association Name="User_ConfigurationUserProperty" Member="ConfigurationUserProperties" ThisKey="ID" OtherKey="UserID" Type="ConfigurationUserProperty" />
+      <Association Name="User_DictionaryUserField" Member="DictionaryUserFields" ThisKey="ID" OtherKey="UserID" Type="DictionaryUserField" />
+      <Association Name="User_UserField" Member="UserFields" ThisKey="ID" OtherKey="UserID" Type="UserField" />
+      <Association Name="User_UserMenuItem" Member="UserMenuItems" ThisKey="ID" OtherKey="UserID" Type="UserMenuItem" />
+      <Association Name="User_UserProperty" Member="UserProperties" ThisKey="ID" OtherKey="UserID" Type="UserProperty" />
+      <Association Name="User_UserRole" Member="UserRoles" ThisKey="ID" OtherKey="UserID" Type="UserRole" />
+      <Association Name="User_UserSetting" Member="UserSettings" ThisKey="ID" OtherKey="UserID" Type="UserSetting" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserField" Member="UserFields">
+    <Type Name="UserField">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ClassificationTreeID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DictionaryTreeID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DcitionaryPropertyID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FieldPlaceHolderID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FieldPlaceHolder_UserField" Member="FieldPlaceHolder" ThisKey="FieldPlaceHolderID" OtherKey="ID" Type="FieldPlaceHolder" IsForeignKey="true" />
+      <Association Name="User_UserField" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="DictionaryProperty_UserField" Member="DictionaryProperty" ThisKey="DcitionaryPropertyID" OtherKey="ID" Type="DictionaryProperty" IsForeignKey="true" />
+      <Association Name="DictionaryTree_UserField" Member="DictionaryTree" ThisKey="DictionaryTreeID" OtherKey="ID" Type="DictionaryTree" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserMenuItem" Member="UserMenuItems">
+    <Type Name="UserMenuItem">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserMenuTypeID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ViewID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Url" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="User_UserMenuItem" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+      <Association Name="UserMenuType_UserMenuItem" Member="UserMenuType" ThisKey="UserMenuTypeID" OtherKey="ID" Type="UserMenuType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserMenuType" Member="UserMenuTypes">
+    <Type Name="UserMenuType">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="UserMenuType_UserMenuItem" Member="UserMenuItems" ThisKey="ID" OtherKey="UserMenuTypeID" Type="UserMenuItem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserProperty" Member="UserProperties">
+    <Type Name="UserProperty">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="PropertyID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ClassificationTreeID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FieldPlaceHolderID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Sequence" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="FieldPlaceHolder_UserProperty" Member="FieldPlaceHolder" ThisKey="FieldPlaceHolderID" OtherKey="ID" Type="FieldPlaceHolder" IsForeignKey="true" />
+      <Association Name="Property_UserProperty" Member="Property" ThisKey="PropertyID" OtherKey="ID" Type="Property" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="User_UserProperty" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserRole" Member="UserRoles">
+    <Type Name="UserRole">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="RoleID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Role_UserRole" Member="Role" ThisKey="RoleID" OtherKey="ID" Type="Role" IsForeignKey="true" />
+      <Association Name="User_UserRole" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Configuration" Member="Configurations">
+    <Type Name="Configuration">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProductID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="Position" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Zone" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="QuantityInclusive" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AutoUpdate" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="GroupNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GroupToChange" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[_dictUMID]" Member="_dictUMID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ProductOwnerID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="version" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="dt_upd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Product_Configuration" Member="Product" ThisKey="ProductID" OtherKey="ID" Type="Product" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Product_Configuration1" Member="Product1" ThisKey="ProductOwnerID" OtherKey="ID" Type="Product" IsForeignKey="true" />
+      <Association Name="_dictUM_Configuration" Member="_dictUM" ThisKey="_dictUMID" OtherKey="ID" Type="_dictUM" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Product" Member="Products">
+    <Type Name="Product">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(300) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="[_dictPVDID]" Member="_dictPVDID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="[_dictSFID]" Member="_dictSFID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="[_dictUMID]" Member="_dictUMID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="cod_Asp" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="[_dictNomenID]" Member="_dictNomenID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="[_dictNomen1ID]" Member="_dictNomen1ID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="cod_Nomen_Asp" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="cod_Nomen1_Asp" Type="System.Int32" DbType="Int" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="[userID]" Member="userID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Product_ClassificationTreeProduct" Member="ClassificationTreeProducts" ThisKey="ID" OtherKey="ProductID" Type="ClassificationTreeProduct" />
+      <Association Name="Product_CustomClassificationNodeProduct" Member="CustomClassificationNodeProducts" ThisKey="ID" OtherKey="ProductID" Type="CustomClassificationNodeProduct" />
+      <Association Name="Product_ProductProperty" Member="ProductProperties" ThisKey="ID" OtherKey="ProductID" Type="ProductProperty" />
+      <Association Name="Product_Configuration" Member="Configurations" ThisKey="ID" OtherKey="ProductID" Type="Configuration" />
+      <Association Name="Product_Configuration1" Member="Configurations1" ThisKey="ID" OtherKey="ProductOwnerID" Type="Configuration" />
+      <Association Name="_dictNomen_Product" Member="_dictNomen" ThisKey="_dictNomenID" OtherKey="ID" Type="_dictNomen" IsForeignKey="true" />
+      <Association Name="_dictNomen_Product1" Member="_dictNomen1" ThisKey="_dictNomen1ID" OtherKey="ID" Type="_dictNomen" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_dictNomen]" Member="_dictNomens">
+    <Type Name="_dictNomen">
+      <Column Name="pn1" Type="System.String" DbType="Char(50)" CanBeNull="true" />
+      <Column Name="pw" Type="System.Decimal" DbType="Decimal(14,7)" CanBeNull="true" />
+      <Column Name="cmt_ogt" Type="System.String" DbType="Char(40)" CanBeNull="true" />
+      <Column Name="cmt_skb" Type="System.String" DbType="Char(25)" CanBeNull="true" />
+      <Column Name="cmt" Type="System.String" DbType="Char(25)" CanBeNull="true" />
+      <Column Name="raznes" Type="System.Decimal" DbType="Decimal(11,0)" CanBeNull="true" />
+      <Column Name="dt_izg" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="kol_izg" Type="System.Decimal" DbType="Decimal(6,0)" CanBeNull="true" />
+      <Column Name="ost" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="superpole" Type="System.String" DbType="Char(100)" CanBeNull="true" />
+      <Column Name="kodmat" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="top_marka" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="gosthimstr" Type="System.String" DbType="Char(25)" CanBeNull="true" />
+      <Column Name="[_dictP1StID]" Member="_dictP1StID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="[_dictGostID]" Member="_dictGostID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="[_dictHSID]" Member="_dictHSID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="[_dictSortamID]" Member="_dictSortamID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="[_dictMarkaID]" Member="_dictMarkaID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="[_dictFDID]" Member="_dictFDID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ost_m1" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="name2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="[_dictSortam1ID]" Member="_dictSortam1ID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="pn2_2" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="[_dictMarka1ID]" Member="_dictMarka1ID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="pn2" Type="System.String" DbType="VarChar(300)" IsReadOnly="true" CanBeNull="true" />
+      <Column Name="cod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="_dictNomen_Product" Member="Products" ThisKey="ID" OtherKey="_dictNomenID" Type="Product" />
+      <Association Name="_dictNomen_Product1" Member="Products1" ThisKey="ID" OtherKey="_dictNomen1ID" Type="Product" />
+      <Association Name="_dictNomen_Specification_1" Member="Specification_1s" ThisKey="ID" OtherKey="_Product_ID" Type="Specification_1" />
+      <Association Name="_dictNomen_Specification_11" Member="Specification_1s1" ThisKey="ID" OtherKey="_Material_ID" Type="Specification_1" />
+      <Association Name="_dictNomen_Specification_2" Member="Specification_2s" ThisKey="ID" OtherKey="_Product_ID" Type="Specification_2" />
+      <Association Name="_dictNomen_Specification_21" Member="Specification_2s1" ThisKey="ID" OtherKey="_Material_ID" Type="Specification_2" />
+      <Association Name="_dictNomen_Specification_3" Member="Specification_3s" ThisKey="ID" OtherKey="_Product_ID" Type="Specification_3" Cardinality="One" />
+      <Association Name="_dictNomen_Specification_31" Member="Specification_3s1" ThisKey="ID" OtherKey="_Material_ID" Type="Specification_3" Cardinality="One" />
+      <Association Name="_dictNomen_TechnReadiness" Member="TechnReadinesses" ThisKey="ID" OtherKey="_dictNomenID" Type="TechnReadiness" Cardinality="One" />
+      <Association Name="_dictH__dictNomen" Member="_dictH" ThisKey="_dictHSID" OtherKey="ID" Type="_dictH" IsForeignKey="true" DeleteRule="SET NULL" />
+      <Association Name="TechnDate__dictNomen" Member="TechnDate" ThisKey="ID" OtherKey="_dictNomenID" Type="TechnDate" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Setting" Member="Settings">
+    <Type Name="Setting">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Setting_UserSetting" Member="UserSettings" ThisKey="ID" OtherKey="SettingID" Type="UserSetting" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserSetting" Member="UserSettings">
+    <Type Name="UserSetting">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="SettingID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Setting_UserSetting" Member="Setting" ThisKey="SettingID" OtherKey="ID" Type="Setting" IsForeignKey="true" />
+      <Association Name="User_UserSetting" Member="User" ThisKey="UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DictionaryProperty" Member="DictionaryProperties">
+    <Type Name="DictionaryProperty">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ColumnName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DictionaryID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TypeID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Position" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="DictionaryProperty_ConfigurationUserField" Member="ConfigurationUserFields" ThisKey="ID" OtherKey="DcitionaryPropertyID" Type="ConfigurationUserField" />
+      <Association Name="DictionaryProperty_DictionaryUserField" Member="DictionaryUserFields" ThisKey="ID" OtherKey="DcitionaryPropertyID" Type="DictionaryUserField" />
+      <Association Name="DictionaryProperty_UserField" Member="UserFields" ThisKey="ID" OtherKey="DcitionaryPropertyID" Type="UserField" />
+      <Association Name="Dictionary_DictionaryProperty" Member="Dictionary" ThisKey="DictionaryID" OtherKey="ID" Type="Dictionary" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Type_DictionaryProperty" Member="Type" ThisKey="TypeID" OtherKey="ID" Type="Type" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_dictS]" Member="_dicts">
+    <Type Name="_dict">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cod_old" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="so" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sn1" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="sn2" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="potrebm" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cmt" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="_dict_Specification_1" Member="Specification_1s" ThisKey="id" OtherKey="_dictSID" Type="Specification_1" />
+      <Association Name="_dict_Specification_2" Member="Specification_2s" ThisKey="id" OtherKey="_dictSID" Type="Specification_2" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_dictS_te]" Member="_dictS_tes">
+    <Type Name="_dictS_te">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="type" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Association Name="_dictS_te_Specification_1" Member="Specification_1s" ThisKey="id" OtherKey="_dictS_TEID" Type="Specification_1" />
+      <Association Name="_dictS_te_Specification_2" Member="Specification_2s" ThisKey="id" OtherKey="_dictS_TEID" Type="Specification_2" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DictionaryTree" Member="DictionaryTrees">
+    <Type Name="DictionaryTree">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ParentID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="DictionaryID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Alias" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PK" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FK" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ClassificationID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Position" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="DictionaryTree_ConfigurationUserField" Member="ConfigurationUserFields" ThisKey="ID" OtherKey="DictionaryTreeID" Type="ConfigurationUserField" />
+      <Association Name="DictionaryTree_DictionaryUserField" Member="DictionaryUserFields" ThisKey="ID" OtherKey="DictionaryTreeID" Type="DictionaryUserField" />
+      <Association Name="DictionaryTree_DictionaryUserField1" Member="DictionaryUserFields1" ThisKey="ID" OtherKey="DictionaryTreeNodeID" Type="DictionaryUserField" />
+      <Association Name="DictionaryTree_UserField" Member="UserFields" ThisKey="ID" OtherKey="DictionaryTreeID" Type="UserField" />
+      <Association Name="DictionaryTree_DictionaryTree" Member="DictionaryTrees" ThisKey="ID" OtherKey="ParentID" Type="DictionaryTree" />
+      <Association Name="Dictionary_DictionaryTree" Member="Dictionary" ThisKey="DictionaryID" OtherKey="ID" Type="Dictionary" IsForeignKey="true" />
+      <Association Name="DictionaryTree_DictionaryTree" Member="DictionaryTree1" ThisKey="ParentID" OtherKey="ID" Type="DictionaryTree" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_dictPVD]" Member="_dictPVDs">
+    <Type Name="_dictPVD">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="pvdn" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="cod_Asp" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="urle" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dtle" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="userID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="_dictPVD_Specification_1" Member="Specification_1s" ThisKey="ID" OtherKey="_dictPVDID" Type="Specification_1" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_dictUM]" Member="_dictUMs">
+    <Type Name="_dictUM">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cod_old" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="umn1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="umn2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="cod_Asp" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="urle" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dtle" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="userID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="_dictUM_Configuration" Member="Configurations" ThisKey="ID" OtherKey="_dictUMID" Type="Configuration" />
+      <Association Name="_dictUM_Specification_1" Member="Specification_1s" ThisKey="ID" OtherKey="_dictUMID" Type="Specification_1" />
+      <Association Name="_dictUM_Specification_2" Member="Specification_2s" ThisKey="ID" OtherKey="_dictUMID" Type="Specification_2" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[_dictSF]" Member="_dictSFs">
+    <Type Name="_dictSF">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cod_Asp" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sfn" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="urle" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dtle" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="userID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="_dictSF_Specification_1" Member="Specification_1s" ThisKey="ID" OtherKey="_dictSFID" Type="Specification_1" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OrderArticle" Member="OrderArticles">
+    <Type Name="OrderArticle">
+      <Column Name="[_dictNomenID]" Member="_dictNomenID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="year" Type="System.String" DbType="Char(4)" CanBeNull="true" />
+      <Column Name="cco" Type="System.String" DbType="VarChar(22)" CanBeNull="true" />
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LastVersProductID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="LastVersCreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="OrderArticle_Specification_1" Member="Specification_1s" ThisKey="ID" OtherKey="OrderArticleID" Type="Specification_1" />
+      <Association Name="OrderArticle_Specification_2" Member="Specification_2s" ThisKey="ID" OtherKey="OrderArticleID" Type="Specification_2" />
+      <Association Name="OrderArticle_TechnReadiness" Member="TechnReadinesses" ThisKey="ID" OtherKey="OrderArticleID" Type="TechnReadiness" Cardinality="One" />
+      <Association Name="TechnDate_OrderArticle" Member="TechnDate" ThisKey="ID" OtherKey="OrderArticleID" Type="TechnDate" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Specification_1" Member="Specification_1s">
+    <Type Name="Specification_1">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StartDT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FinishDT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OrderArticleID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="[_Product_ID]" Member="_Product_ID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="[_dictPVDID]" Member="_dictPVDID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="[_Material_ID]" Member="_Material_ID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="no" Type="System.Decimal" DbType="Decimal(15,10)" CanBeNull="true" />
+      <Column Name="[_dictUMID]" Member="_dictUMID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="[_dictSFID]" Member="_dictSFID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ss" Type="System.String" DbType="Char(30)" CanBeNull="true" />
+      <Column Name="sd" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="sp" Type="System.String" DbType="Char(40)" CanBeNull="true" />
+      <Column Name="sw" Type="System.Decimal" DbType="Decimal(11,5)" CanBeNull="true" />
+      <Column Name="stw" Type="System.Decimal" DbType="Decimal(11,5)" CanBeNull="true" />
+      <Column Name="[_dictSID]" Member="_dictSID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="cmt" Type="System.String" DbType="VarChar(222)" CanBeNull="true" />
+      <Column Name="urle" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dtle" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="gt_kmh" Type="System.Decimal" DbType="Decimal(1,0)" CanBeNull="true" />
+      <Column Name="gt_kmh_dt" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="gt_kmh_us" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="t_got" Type="System.String" DbType="Char(14)" CanBeNull="true" />
+      <Column Name="h_got" Type="System.String" DbType="Char(14)" CanBeNull="true" />
+      <Column Name="s_got" Type="System.String" DbType="Char(14)" CanBeNull="true" />
+      <Column Name="Route" Type="System.String" DbType="VarChar(168)" CanBeNull="true" />
+      <Column Name="qdu" Type="System.Decimal" DbType="Decimal(9,3)" CanBeNull="true" />
+      <Column Name="userID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="[_dictS_TEID]" Member="_dictS_TEID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="_dictNomen_Specification_1" Member="Product" ThisKey="_Product_ID" OtherKey="ID" Type="_dictNomen" IsForeignKey="true" />
+      <Association Name="_dictNomen_Specification_11" Member="Material" ThisKey="_Material_ID" OtherKey="ID" Type="_dictNomen" IsForeignKey="true" />
+      <Association Name="OrderArticle_Specification_1" Member="OrderArticle" ThisKey="OrderArticleID" OtherKey="ID" Type="OrderArticle" IsForeignKey="true" />
+      <Association Name="_dictPVD_Specification_1" Member="_dictPVD" ThisKey="_dictPVDID" OtherKey="ID" Type="_dictPVD" IsForeignKey="true" />
+      <Association Name="_dictUM_Specification_1" Member="_dictUM" ThisKey="_dictUMID" OtherKey="ID" Type="_dictUM" IsForeignKey="true" />
+      <Association Name="_dictSF_Specification_1" Member="_dictSF" ThisKey="_dictSFID" OtherKey="ID" Type="_dictSF" IsForeignKey="true" />
+      <Association Name="_dictS_te_Specification_1" Member="_dictS_te" ThisKey="_dictS_TEID" OtherKey="id" Type="_dictS_te" IsForeignKey="true" />
+      <Association Name="_dict_Specification_1" Member="_dict" ThisKey="_dictSID" OtherKey="id" Type="_dict" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Specification_2" Member="Specification_2s">
+    <Type Name="Specification_2">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StartDT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FinishDT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OrderArticleID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="[_dictS_TEID]" Member="_dictS_TEID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="[_Product_ID]" Member="_Product_ID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="[_Material_ID]" Member="_Material_ID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="no" Type="System.Decimal" DbType="Decimal(15,10)" CanBeNull="true" />
+      <Column Name="[_dictUMID]" Member="_dictUMID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="[_dictSID]" Member="_dictSID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="cmt" Type="System.String" DbType="VarChar(222)" CanBeNull="true" />
+      <Column Name="urle" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dtle" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="userID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="_dictNomen_Specification_2" Member="Product" ThisKey="_Product_ID" OtherKey="ID" Type="_dictNomen" IsForeignKey="true" />
+      <Association Name="_dictNomen_Specification_21" Member="Material" ThisKey="_Material_ID" OtherKey="ID" Type="_dictNomen" IsForeignKey="true" />
+      <Association Name="OrderArticle_Specification_2" Member="OrderArticle" ThisKey="OrderArticleID" OtherKey="ID" Type="OrderArticle" IsForeignKey="true" />
+      <Association Name="_dictUM_Specification_2" Member="_dictUM" ThisKey="_dictUMID" OtherKey="ID" Type="_dictUM" IsForeignKey="true" />
+      <Association Name="_dictS_te_Specification_2" Member="_dictS_te" ThisKey="_dictS_TEID" OtherKey="id" Type="_dictS_te" IsForeignKey="true" />
+      <Association Name="_dict_Specification_2" Member="_dict" ThisKey="_dictSID" OtherKey="id" Type="_dict" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Specification_3" Member="Specification_3s">
+    <Type Name="Specification_3">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="StartDT" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FinishDT" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="[_Product_ID]" Member="_Product_ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="[_Material_ID]" Member="_Material_ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cmt" Type="System.String" DbType="VarChar(222)" CanBeNull="true" />
+      <Column Name="urle" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dtle" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="Route" Type="System.String" DbType="VarChar(168)" CanBeNull="true" />
+      <Column Name="userID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="_dictNomen_Specification_3" Member="_dictNomen" ThisKey="_Product_ID" OtherKey="ID" Type="_dictNomen" IsForeignKey="true" />
+      <Association Name="_dictNomen_Specification_31" Member="_dictNomen1" ThisKey="_Material_ID" OtherKey="ID" Type="_dictNomen" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ColumnWidth" Member="ColumnWidths">
+    <Type Name="ColumnWidth">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ClassificationTreeID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ColumnID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Width" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="[Index]" Member="Index" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Hidden" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TechnDates" Member="TechnDates">
+    <Type Name="TechnDate">
+      <Column Name="[_dictNomenID]" Member="_dictNomenID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OrderArticleID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="gen_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="him_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="svar_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="techn_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="TechnDate__dictNomen" Member="_dictNomens" ThisKey="_dictNomenID" OtherKey="ID" Type="_dictNomen" Cardinality="One" />
+      <Association Name="TechnDate_OrderArticle" Member="OrderArticles" ThisKey="OrderArticleID" OtherKey="ID" Type="OrderArticle" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TechnReadiness" Member="TechnReadinesses">
+    <Type Name="TechnReadiness">
+      <Column Name="[_dictNomenID]" Member="_dictNomenID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OrderArticleID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="him_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="svar_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="techn_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="OrderArticle_TechnReadiness" Member="OrderArticle" ThisKey="OrderArticleID" OtherKey="ID" Type="OrderArticle" IsForeignKey="true" />
+      <Association Name="_dictNomen_TechnReadiness" Member="_dictNomen" ThisKey="_dictNomenID" OtherKey="ID" Type="_dictNomen" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GetClassificationTreeChilds" Method="GetClassificationTreeChilds">
+    <Parameter Name="ClassificationTreeID" Parameter="classificationTreeID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="GetClassificationTreeChildsResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetDictionaryTreeChilds" Method="GetDictionaryTreeChilds">
+    <Parameter Name="DictionaryTreeID" Parameter="dictionaryTreeID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="dbo.GetCustomClassificationTreeChilds" Method="GetCustomClassificationTreeChilds">
+    <Parameter Name="CustomClassificationTreeID" Parameter="customClassificationTreeID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="GetCustomClassificationTreeChildsResult">
+      <Column Name="NodeID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ClassificationTreeID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetDictionaryTreeParents" Method="GetDictionaryTreeParents">
+    <Parameter Name="DictionaryTreeID" Parameter="dictionaryTreeID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="GetDictionaryTreeParentsResult">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="[Level]" Member="Level" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetNomenSuperField" Method="GetNomenSuperField">
+    <Parameter Name="_dictP1STID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="_dictGOSTID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="PN1" Parameter="pN1" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="PN2_2" Parameter="pN2_2" Type="System.String" DbType="NVarChar(100)" />
+    <ElementType Name="GetNomenSuperFieldResult">
+      <Column Name="superfield" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetNomenSuperFieldUa" Method="GetNomenSuperFieldUa">
+    <Parameter Name="_dictP1STID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="_dictGOSTID" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="PN1" Parameter="pN1" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="PN2_2" Parameter="pN2_2" Type="System.String" DbType="NVarChar(20)" />
+    <ElementType Name="GetNomenSuperFieldUaResult">
+      <Column Name="superfield" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

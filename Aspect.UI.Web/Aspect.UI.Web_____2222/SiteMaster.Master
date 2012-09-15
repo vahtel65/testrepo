@@ -1,0 +1,150 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteMaster.master.cs" Inherits="Aspect.UI.Web.SiteMaster" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">    
+    <title></title>
+    <link rel="Stylesheet" type="text/css" href="/css/main.css" />
+    <link rel="Stylesheet" type="text/css" href="/css/thickbox.css" />
+    <link rel="Stylesheet" type="text/css" href="/css/splitter.css" />
+    <script type="text/javascript" src="/scripts/jquery.js" ></script>
+    <script type="text/javascript" src="/scripts/jquery-ext.js" ></script>
+    <script type="text/javascript" src="/scripts/aspect.js"></script>
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico" /> 
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    
+    
+    <script type="text/javascript">
+        $(function() {
+            $('ul.jd_menu').jdMenu({ onShow: loadMenu });
+        });
+
+        var MENU_COUNTER = 1;
+        function loadMenu() {
+            if (this.id == 'dynamicMenu') {
+                $('> ul > li', this).remove();
+
+                var ul = $('<ul></ul>');
+                var t = MENU_COUNTER + 10;
+                for (; MENU_COUNTER < t; MENU_COUNTER++) {
+                    $('> ul', this).append('<li>Item ' + MENU_COUNTER + '</li>');
+                }
+            }
+        }     
+	</script>
+	
+	<link rel="stylesheet" href="/css/jquery.jdMenu.css" type="text/css" />
+
+    <asp:ContentPlaceHolder ID="headPlace" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <cc1:ToolkitScriptManager ID="ToolkitScriptManager2" runat="server"/>
+        <asp:Panel runat="server" ID="MenuPanel">
+        <div id="header">
+            <ul class="jd_menu jd_menu_slate" >
+	            <li>Общие &raquo;
+		            <ul>
+			            <li>Все объекты &raquo; 
+			                <ul>
+				                <li><asp:HyperLink ID="HyperLink14" runat="server" NavigateUrl="~/Grid.aspx?cid=55c7b455-0638-4acb-ac2e-5b4992e48462&pid=55c7b455-0638-4acb-ac2e-5b4992e48462" Text="Матресурсы" Target="_blank" /></li>
+                                <li><asp:HyperLink ID="HyperLink16" runat="server" NavigateUrl="~/Grid.aspx?cid=316c6bc7-d883-44c8-aae0-602f49c73595&pid=316c6bc7-d883-44c8-aae0-602f49c73595" Text="Номенклатура" Target="_blank" /></li>
+                                <li><asp:HyperLink ID="HyperLink17" runat="server" NavigateUrl="~/Grid.aspx?cid=c7aac27a-8efe-4a7c-a98d-2e61ae12decc&pid=c7aac27a-8efe-4a7c-a98d-2e61ae12decc" Text="Марки" Target="_blank" /></li>
+                                <li><asp:HyperLink ID="HyperLink18" runat="server" NavigateUrl="~/Grid.aspx?cid=e6edb503-ccb9-4731-b712-e90c0b4fae64&pid=e6edb503-ccb9-4731-b712-e90c0b4fae64" Text="Сортаменты" Target="_blank" /></li>
+                                <li><asp:HyperLink ID="HyperLink19" runat="server" NavigateUrl="~/Grid.aspx?cid=bb4bca91-c56d-4746-b5c2-c7cf29596f3d&pid=bb4bca91-c56d-4746-b5c2-c7cf29596f3d" Text="ГОСТы" Target="_blank" /></li>
+                                <li><asp:HyperLink ID="HyperLink20" runat="server" NavigateUrl="~/Grid.aspx?cid=6776b382-3e89-4e0c-9f5f-a93fd91d2d9f&pid=6776b382-3e89-4e0c-9f5f-a93fd91d2d9f" Text="Единицы измерения" Target="_blank" /></li>
+                                <li><asp:HyperLink ID="HyperLink21" runat="server" NavigateUrl="~/Grid.aspx?cid=82bb8f10-db02-40bb-87e8-f87fae21c37d&pid=82bb8f10-db02-40bb-87e8-f87fae21c37d" Text="Разделы спецификации" Target="_blank" /></li>
+                                <li><asp:HyperLink ID="HyperLink22" runat="server" NavigateUrl="~/Grid.aspx?cid=98c60832-a66c-4a84-bc90-eb83ee43c4c9&pid=98c60832-a66c-4a84-bc90-eb83ee43c4c9" Text="Наименование матрес." Target="_blank" /></li>
+			                </ul>
+			            </li>
+			            <li>Общие &raquo;
+			                <ul>
+			                    <li><asp:HyperLink ID="HyperLink23" runat="server" NavigateUrl="~/Grid.aspx?cid=55c7b455-0638-4acb-ac2e-5b4992e48462&pid=55c7b455-0638-4acb-ac2e-5b4992e48462" Text="Продукция (матресурсы)" Target="_blank" /></li>
+                                <li><asp:HyperLink ID="HyperLink24" runat="server" NavigateUrl="~/Grid.aspx?cid=88272a12-c4fd-4de0-a373-0b0ababf711d&pid=88272a12-c4fd-4de0-a373-0b0ababf711d" Text="Изделия" Target="_blank" /></li>
+                                <li>Справочники &raquo;
+                                    <ul>
+                                        <li><asp:HyperLink ID="HyperLink25" runat="server" NavigateUrl="~/Grid.aspx?cid=82bb8f10-db02-40bb-87e8-f87fae21c37d&pid=82bb8f10-db02-40bb-87e8-f87fae21c37d" Text="Разделы спецификации" Target="_blank" /></li>
+                                        <li><asp:HyperLink ID="HyperLink26" runat="server" NavigateUrl="~/Grid.aspx?cid=6776b382-3e89-4e0c-9f5f-a93fd91d2d9f&pid=6776b382-3e89-4e0c-9f5f-a93fd91d2d9f" Text="Единицы измерения" Target="_blank" /></li>
+                                        <li><a><span style="color:#CAD1D5;">Подразделения</span></a></li>
+                                    </ul>
+                                </li>
+                                <li><asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/Grid.aspx?cid=21641a43-c429-468a-99e2-3048f1b0ed3b&pid=21641a43-c429-468a-99e2-3048f1b0ed3b" Text="Оснастка" Target="_blank" /></li>
+			                </ul> 
+			            </li>
+			            <li>СКБ &raquo; 
+			                <ul>
+			                    <li><a disabled="disabled"><span style="color:#CAD1D5;">Приказы</span></a></li>
+                                <li><a style="color:Gray;" disabled="disabled"><span style="color:#CAD1D5;">Замена применяемости ДСЕ</span></a></li>
+                                <li><a style="color:Gray;" disabled="disabled"><span style="color:#CAD1D5;">Справочник поразделений</span></a></li>      
+                                <li><a style="color:Gray;" disabled="disabled"><span style="color:#CAD1D5;">для рассылки</span></a></li>
+			                </ul>
+			            </li>
+			            <li>ОГТ &raquo; 
+			                <ul>
+			                    <li><a disabled="disabled"><span style="color:#CAD1D5;">Временные приказы ОГТ</span></a></li>
+                                <li><asp:HyperLink ID="HyperLink15" runat="server" NavigateUrl="~/Grid.aspx?cid=433a1b82-a717-416f-82dd-9d9004cc62c3&pid=433a1b82-a717-416f-82dd-9d9004cc62c3" Text="Материалы" Target="_blank" /></li>
+                                <li><a disabled="disabled"><span style="color:#CAD1D5;">Группы материалов</span></a></li>
+                                <li><a disabled="disabled"><span style="color:#CAD1D5;">Варианты техмаршрутов</span></a></li>
+                                <li><a disabled="disabled"><span style="color:#CAD1D5;">Оборудование</span></a></li>
+                                <li><a disabled="disabled"><span style="color:#CAD1D5;">Проверки КМХ</span></a></li>
+                                <li><a disabled="disabled"><span style="color:#CAD1D5;">Протокол замены материалов</span></a></li>
+			                </ul>
+			            </li>
+			            <li>Пользовательские группы &raquo; 
+			                <ul>
+			                    <li><asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Grid.aspx?cid=30b36261-f955-4be8-9e4f-2313a0f508e4&pid=30b36261-f955-4be8-9e4f-2313a0f508e4" Text="Продукция СКБ" Target="_blank" /></li>
+                                <li><asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Grid.aspx?cid=684edae4-d35b-4854-89ed-6f2de2b52c3e&pid=684edae4-d35b-4854-89ed-6f2de2b52c3e" Text="Продукция ОГМЕТ" Target="_blank" /></li>
+                                <li><asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Grid.aspx?cid=e9433668-f160-426b-beaa-f085fef04bbd&pid=e9433668-f160-426b-beaa-f085fef04bbd" Text="Продукция ОМА" Target="_blank" /></li>
+                                <li><asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/Grid.aspx?cid=9b5ff261-32da-4397-a0fb-21c6e3cfe18f&pid=9b5ff261-32da-4397-a0fb-21c6e3cfe18f" Text="Продукция ОГЭ" Target="_blank" /></li>
+                                <li><asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/Grid.aspx?cid=fde1ac7b-6a40-4f66-be7a-04e453d73a0c&pid=fde1ac7b-6a40-4f66-be7a-04e453d73a0c" Text="Продукция ОГМ" Target="_blank" /></li>
+                                <li><asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/Grid.aspx?cid=c14cead7-1f9c-44fe-8c2e-1f1bf8f97c80&pid=c14cead7-1f9c-44fe-8c2e-1f1bf8f97c80" Text="Продукция ОГТ" Target="_blank" /></li>
+                                <li><asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/Grid.aspx?cid=3c0ec567-c230-4757-a7c1-611860d125f3&pid=3c0ec567-c230-4757-a7c1-611860d125f3" Text="Продукция ОКС" Target="_blank" /></li>
+                                <li><asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/Grid.aspx?cid=dfa8866d-213d-4f8b-b792-d9ff25ff2867&pid=dfa8866d-213d-4f8b-b792-d9ff25ff2867" Text="Товарные позиции ПЭО" Target="_blank" /></li>
+			                </ul>
+			            </li>
+		            </ul>
+	            </li>
+	            <li>Пользовательские &raquo;
+		            <ul>
+			           <asp:Repeater ID="PreDefinedRepeater" runat="server">
+                            <ItemTemplate>
+                                <li><asp:HyperLink ID="MenuItem" runat="server" Text='<%# Eval("Name") %>' NavigateUrl='<%# String.Format("~{0}", Eval("Url")) %>' Target="_blank" /></li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+		            </ul>
+	            </li>
+	            <li>Настроенные &raquo;
+		            <ul>
+			            <asp:Repeater ID="FavoriteRepeater" runat="server">
+                            <ItemTemplate>
+                                <li><asp:HyperLink ID="MenuItem" runat="server" Text='<%# Eval("Name") %>' NavigateUrl='<%# String.Format("~{0}", Eval("Url")) %>' Target="_blank" /></li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+		            </ul>
+	            </li>
+	            <li>Предыдущие &raquo;
+		            <ul>
+			            <asp:Repeater ID="PreviouseRepeater" runat="server">
+                            <ItemTemplate>
+                                <li><asp:HyperLink ID="MenuItem" runat="server" Text='<%# Eval("Name") %>' NavigateUrl='<%# String.Format("~{0}", Eval("Url")) %>' Target="_blank" /></li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+		            </ul>
+	            </li>
+	            <li style="color:Gray;">Администрирование &raquo;	                
+	                <asp:PlaceHolder ID="menuAdministrator" runat="server">	                   	                
+	                <ul>
+	                    <li><asp:HyperLink runat="server" NavigateUrl="/Administrator/Console.aspx" Text="Консоль администратора" Target="_blank" /></li>
+	                    <li><asp:HyperLink runat="server" NavigateUrl="/Loging/View.aspx" Text="Просмотр логов" Target="_blank" /></li>
+                    </ul>
+                    </asp:PlaceHolder>
+	            </li>
+	            <li><a id="A2" href="SignOut.ashx">Выход</a></li>
+            </ul>
+        </div>
+        </asp:Panel>    
+        <asp:ContentPlaceHolder ID="mainPlace" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>

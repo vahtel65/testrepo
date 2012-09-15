@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" MasterPageFile="~/SiteMaster.Master" CodeBehind="ErrorPagesMaster.master.cs" Inherits="Aspect.UI.Web.ErrorPages.ErrorPagesMaster" %>
+
+<asp:Content ContentPlaceHolderID="headPlace" ID="Content1" runat="server"> 
+        <asp:ContentPlaceHolder ID="headPlace" runat="server">
+        
+        </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ContentPlaceHolderID="mainPlace" ID="Content2" runat="server">
+<center>
+        <div class="baseContent">
+            <div class="divMainContent subBaseContent" style="margin: 52px 0;">                
+                <div class="C">
+                </div>
+                <div class="divMainContent subBaseContent" style="margin-top: 20px;">
+                    <div class="divBreadcrumb">
+                        <div class="L">
+                            <span class="darkgray"><%= "Ошибка" %></span>
+                        </div>
+                    </div>
+                    <div class="subMainContent1">
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td style="text-align:left; vertical-align:top; padding-left:20px;">
+                                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                    </asp:ContentPlaceHolder>
+                                </td>
+                                <td  style="width:75px">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="C">
+                        </div>
+                    </div>
+                    <div class="C">
+                    </div>
+                    <div style="float: right;">
+                    </div>
+                    <div style="clear: both;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+</asp:Content>

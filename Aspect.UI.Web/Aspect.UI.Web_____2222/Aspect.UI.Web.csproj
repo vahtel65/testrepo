@@ -1,0 +1,912 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C0C95EF3-4D28-49F7-AA21-728907EA7272}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Aspect.UI.Web</RootNamespace>
+    <AssemblyName>Aspect.UI.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <UseIISExpress>false</UseIISExpress>
+    <TargetFrameworkProfile />
+    <SilverlightApplicationList>{7E127053-30A2-414B-84AB-3896245B1F3D}|..\Aspect.UI.Silverlight\ListWares\ListWares.csproj|Technology|False,{BB2C8422-3AF5-46C1-B6CD-DC9A7DEE239F}|..\Aspect.UI.Silverlight\Applicability\Applicability.csproj|Technology|False,{37CA06E5-D957-4B91-84DC-052B4306F270}|..\Aspect.UI.Silverlight\EditorKmh\EditorKmh.csproj|Technology|False,{93BD384A-E974-4B53-A662-F9BA0E37C4D1}|..\Aspect.UI.Silverlight\UniGrid\UniGrid.csproj|Technology|False,{CA79D5B0-49CE-4283-8307-64DECBA3C570}|..\Aspect.UI.Silverlight\TreeWithKmh\TreeWithKmh.csproj|Technology|False</SilverlightApplicationList>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AODL, Version=1.2.0.1, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OdfToolKit\AODL.dll</HintPath>
+    </Reference>
+    <Reference Include="Ext.Net, Version=1.2.0.21945, Culture=neutral, PublicKeyToken=2e12ce3d0176cd87, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExtNetToolKit\Ext.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="Technology\TechnDates.aspx" />
+    <Content Include="tmp\Readme.txt" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administrator\Console.aspx.cs">
+      <DependentUpon>Console.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\Console.aspx.designer.cs">
+      <DependentUpon>Console.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrator\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Basic\ColoredTreeNode.cs" />
+    <Compile Include="Basic\ContentPageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Basic\PageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Callback\AddToBuffer.aspx.cs">
+      <DependentUpon>AddToBuffer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Callback\AddToConfigurationBuffer.aspx.cs">
+      <DependentUpon>AddToConfigurationBuffer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Callback\CallbackMaster.Master.cs">
+      <DependentUpon>CallbackMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Callback\MaxVersionForNomen.aspx.cs">
+      <DependentUpon>MaxVersionForNomen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Callback\ProductCard.aspx.cs">
+      <DependentUpon>ProductCard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Callback\SaveAreaSize.aspx.cs">
+      <DependentUpon>SaveAreaSize.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Callback\ClearBuffer.aspx.cs">
+      <DependentUpon>ClearBuffer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Callback\ViewLogLine.aspx.cs">
+      <DependentUpon>ViewLogLine.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Callback\ViewLogLine.aspx.designer.cs">
+      <DependentUpon>ViewLogLine.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration\Compare.aspx.cs">
+      <DependentUpon>Compare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Configuration\ConfigurationMaster.Master.cs">
+      <DependentUpon>ConfigurationMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Configuration\EditReadOnly.aspx.cs">
+      <DependentUpon>EditReadOnly.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Configuration\Edit.aspx.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Configuration\Tree.aspx.cs">
+      <DependentUpon>Tree.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Configuration\Usage.aspx.cs">
+      <DependentUpon>Usage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Configuration\View.aspx.cs">
+      <DependentUpon>View.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Configuration\TreeEx.aspx.cs">
+      <DependentUpon>TreeEx.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tools\Content.aspx.cs">
+      <DependentUpon>Content.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Pager.ascx.cs">
+      <DependentUpon>Pager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Editarea\Edit.aspx.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Editarea\EditDict.aspx.cs">
+      <DependentUpon>EditDict.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Editarea\NewVersion.aspx.cs">
+      <DependentUpon>NewVersion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Editarea\NewVersion.aspx.designer.cs">
+      <DependentUpon>NewVersion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Editarea\View.aspx.cs">
+      <DependentUpon>View.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Editarea\ViewDict.aspx.cs">
+      <DependentUpon>ViewDict.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\ErrorPagesMaster.master.cs">
+      <DependentUpon>ErrorPagesMaster.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\LockedResource.aspx.cs">
+      <DependentUpon>LockedResource.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Grid.aspx.cs">
+      <DependentUpon>Grid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GridAjax.aspx.cs">
+      <DependentUpon>GridAjax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GridAjax.aspx.designer.cs">
+      <DependentUpon>GridAjax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Json\DictsPropsTree.aspx.cs">
+      <DependentUpon>DictsPropsTree.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Json\DictsPropsTree.aspx.designer.cs">
+      <DependentUpon>DictsPropsTree.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Json\ExchangeConfiguration.aspx.cs">
+      <DependentUpon>ExchangeConfiguration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Json\ExchangeConfiguration.aspx.designer.cs">
+      <DependentUpon>ExchangeConfiguration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Json\SearchByConditions.aspx.cs">
+      <DependentUpon>SearchByConditions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Json\SearchByConditions.aspx.designer.cs">
+      <DependentUpon>SearchByConditions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Json\UsageConfigurations.aspx.cs">
+      <DependentUpon>UsageConfigurations.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Json\UsageConfigurations.aspx.designer.cs">
+      <DependentUpon>UsageConfigurations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Loging\View.aspx.cs">
+      <DependentUpon>View.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Loging\View.aspx.designer.cs">
+      <DependentUpon>View.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\Buffer.aspx.cs">
+      <DependentUpon>Buffer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Popup\ProductSearch2.aspx.cs">
+      <DependentUpon>ProductSearch2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Popup\PopupMaster.Master.cs">
+      <DependentUpon>PopupMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Popup\ProductActions.aspx.cs">
+      <DependentUpon>ProductActions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Popup\ProductSearch.aspx.cs">
+      <DependentUpon>ProductSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Popup\Selector.aspx.cs">
+      <DependentUpon>Selector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Popup\SelectTreeClass.aspx.cs">
+      <DependentUpon>SelectTreeClass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Popup\SelectTreeClass.aspx.designer.cs">
+      <DependentUpon>SelectTreeClass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\SummaryWeight.aspx.cs">
+      <DependentUpon>SummaryWeight.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Popup\UserColumns.aspx.cs">
+      <DependentUpon>UserColumns.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Popup\UserColumnsOrder.aspx.cs">
+      <DependentUpon>UserColumnsOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignOut.ashx.cs">
+      <DependentUpon>SignOut.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteMaster.Master.cs">
+      <DependentUpon>SiteMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Technology\Apis.aspx.cs">
+      <DependentUpon>Apis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Technology\Apis.aspx.designer.cs">
+      <DependentUpon>Apis.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Technology\Applicability.aspx.cs">
+      <DependentUpon>Applicability.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Technology\Applicability.aspx.designer.cs">
+      <DependentUpon>Applicability.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Technology\Buffer.aspx.cs">
+      <DependentUpon>Buffer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Technology\Buffer.aspx.designer.cs">
+      <DependentUpon>Buffer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Technology\EditorKmh.aspx.cs">
+      <DependentUpon>EditorKmh.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Technology\EditorKmh.aspx.designer.cs">
+      <DependentUpon>EditorKmh.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Technology\ListWares.aspx.cs">
+      <DependentUpon>ListWares.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Technology\ListWares.aspx.designer.cs">
+      <DependentUpon>ListWares.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Technology\Service.aspx.cs">
+      <DependentUpon>Service.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Technology\Service.aspx.designer.cs">
+      <DependentUpon>Service.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Technology\TechnDates.aspx.cs">
+      <DependentUpon>TechnDates.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Technology\TechnDates.aspx.designer.cs">
+      <DependentUpon>TechnDates.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Technology\TreeWithKmh.aspx.cs">
+      <DependentUpon>TreeWithKmh.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Technology\TreeWithKmh.aspx.designer.cs">
+      <DependentUpon>TreeWithKmh.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Technology\UniGrid.aspx.cs">
+      <DependentUpon>UniGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Technology\UniGrid.aspx.designer.cs">
+      <DependentUpon>UniGrid.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\MultiExchange.aspx.cs">
+      <DependentUpon>MultiExchange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Controls\Pager.ascx" />
+    <Content Include="css\login.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\thickbox.css" />
+    <Content Include="Grid.aspx" />
+    <Content Include="img\ajax-loader.gif" />
+    <Content Include="img\bg_hgrabber.gif" />
+    <Content Include="img\bg_nav_Next.gif" />
+    <Content Include="img\bg_nav_Prev.gif" />
+    <Content Include="img\bg_tb_btn_Edit.gif" />
+    <Content Include="img\bg_tb_btn_Search.gif" />
+    <Content Include="img\bg_th_table_Type1.gif" />
+    <Content Include="img\bg_Toolbar.gif" />
+    <Content Include="img\bg_vgrabber.gif" />
+    <Content Include="img\close.gif" />
+    <Content Include="img\hgrabber.gif" />
+    <Content Include="img\icons\1.gif" />
+    <Content Include="img\icons\2.gif" />
+    <Content Include="img\icons\3.gif" />
+    <Content Include="img\ico_Folder.gif" />
+    <Content Include="img\ico_Minus.png" />
+    <Content Include="img\ico_Plus.png" />
+    <Content Include="img\logo_light.gif" />
+    <Content Include="img\vgrabber.gif" />
+    <Content Include="scripts\jquery.js" />
+    <Content Include="SiteMaster.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aspect.Domain\Aspect.Domain.csproj">
+      <Project>{8472F639-34FC-4BDF-8892-14642DB2E629}</Project>
+      <Name>Aspect.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aspect.Model\Aspect.Model.csproj">
+      <Project>{69EEF79E-6B83-46E5-ACA1-327A65745C92}</Project>
+      <Name>Aspect.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aspect.UI.Web.Controls\Aspect.UI.Web.Controls.csproj">
+      <Project>{8A11A8B5-3878-4315-BBA2-4AE71DF921C4}</Project>
+      <Name>Aspect.UI.Web.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aspect.Utility\Aspect.Utility.csproj">
+      <Project>{E42152C6-6E6E-4050-A86D-EE3B62F996D2}</Project>
+      <Name>Aspect.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Tools\Content.aspx" />
+    <Content Include="Popup\PopupMaster.Master" />
+    <Content Include="Popup\ProductActions.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="error.htm" />
+    <Content Include="Global.asax" />
+    <Content Include="Popup\ProductSearch.aspx" />
+    <Content Include="Popup\UserColumns.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SignOut.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Callback\CallbackMaster.Master" />
+    <Content Include="Callback\ProductCard.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Callback\AddToBuffer.aspx" />
+    <Content Include="Configuration\Edit.aspx" />
+    <Content Include="Configuration\Usage.aspx" />
+    <Content Include="Popup\Buffer.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Callback\AddToConfigurationBuffer.aspx" />
+    <Content Include="Callback\SaveAreaSize.aspx" />
+    <Content Include="Callback\ClearBuffer.aspx" />
+    <Content Include="Configuration\Compare.aspx" />
+    <Content Include="Configuration\ConfigurationMaster.Master" />
+    <Content Include="Configuration\EditReadOnly.aspx" />
+    <Content Include="Configuration\Tree.aspx" />
+    <Content Include="Configuration\View.aspx" />
+    <Content Include="css\splitter.css" />
+    <Content Include="Editarea\Edit.aspx" />
+    <Content Include="Editarea\EditDict.aspx" />
+    <Content Include="Editarea\View.aspx" />
+    <Content Include="Editarea\ViewDict.aspx" />
+    <Content Include="css\gradient-alt.png" />
+    <Content Include="css\gradient-vertical.png" />
+    <Content Include="css\gradient.png" />
+    <Content Include="img\compare.png" />
+    <Content Include="img\ico_1.gif" />
+    <Content Include="img\ico_10.gif" />
+    <Content Include="img\ico_11.gif" />
+    <Content Include="img\ico_12.gif" />
+    <Content Include="img\ico_13.gif" />
+    <Content Include="img\ico_14.gif" />
+    <Content Include="img\ico_15.gif" />
+    <Content Include="img\ico_16.gif" />
+    <Content Include="img\ico_1_1.gif" />
+    <Content Include="img\ico_2.gif" />
+    <Content Include="img\ico_3.gif" />
+    <Content Include="img\ico_4.gif" />
+    <Content Include="img\ico_5.gif" />
+    <Content Include="img\ico_5_2.gif" />
+    <Content Include="img\ico_6.gif" />
+    <Content Include="img\ico_7.gif" />
+    <Content Include="img\ico_8.gif" />
+    <Content Include="img\ico_9.gif" />
+    <Content Include="img\ico_ArrowDn_1.gif" />
+    <Content Include="img\ico_ArrowUp_1.gif" />
+    <Content Include="img\ico_del.GIF" />
+    <Content Include="Popup\SummaryWeight.aspx" />
+    <Content Include="Popup\ProductSearch2.aspx" />
+    <Content Include="Popup\Selector.aspx" />
+    <Content Include="Popup\UserColumnsOrder.aspx" />
+    <Content Include="scripts\aspect.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Administrator\Console.aspx" />
+    <Content Include="Administrator\Users.aspx" />
+    <Content Include="Callback\MaxVersionForNomen.aspx" />
+    <Content Include="Callback\ViewLogLine.aspx" />
+    <Content Include="Configuration\TreeEx.aspx" />
+    <Content Include="css\ext-all.css" />
+    <Content Include="css\jquery.jdMenu.css" />
+    <Content Include="css\xtheme-gray.css" />
+    <Content Include="Editarea\NewVersion.aspx" />
+    <Content Include="ErrorPages\ErrorPagesMaster.master" />
+    <Content Include="ErrorPages\LockedResource.aspx" />
+    <Content Include="GridAjax.aspx" />
+    <Content Include="images\application\minus-circle.png" />
+    <Content Include="images\application\plus-circle.png" />
+    <Content Include="images\default\box\corners-blue.gif" />
+    <Content Include="images\default\box\corners.gif" />
+    <Content Include="images\default\box\l-blue.gif" />
+    <Content Include="images\default\box\l.gif" />
+    <Content Include="images\default\box\r-blue.gif" />
+    <Content Include="images\default\box\r.gif" />
+    <Content Include="images\default\box\tb-blue.gif" />
+    <Content Include="images\default\box\tb.gif" />
+    <Content Include="images\default\button\arrow.gif" />
+    <Content Include="images\default\button\btn.gif" />
+    <Content Include="images\default\button\group-cs.gif" />
+    <Content Include="images\default\button\group-lr.gif" />
+    <Content Include="images\default\button\group-tb.gif" />
+    <Content Include="images\default\button\s-arrow-b-noline.gif" />
+    <Content Include="images\default\button\s-arrow-b.gif" />
+    <Content Include="images\default\button\s-arrow-bo.gif" />
+    <Content Include="images\default\button\s-arrow-noline.gif" />
+    <Content Include="images\default\button\s-arrow-o.gif" />
+    <Content Include="images\default\button\s-arrow.gif" />
+    <Content Include="images\default\dd\drop-add.gif" />
+    <Content Include="images\default\dd\drop-no.gif" />
+    <Content Include="images\default\dd\drop-yes.gif" />
+    <Content Include="images\default\editor\tb-sprite.gif" />
+    <Content Include="images\default\form\checkbox.gif" />
+    <Content Include="images\default\form\clear-trigger.gif" />
+    <Content Include="images\default\form\date-trigger.gif" />
+    <Content Include="images\default\form\error-tip-corners.gif" />
+    <Content Include="images\default\form\exclamation.gif" />
+    <Content Include="images\default\form\radio.gif" />
+    <Content Include="images\default\form\search-trigger.gif" />
+    <Content Include="images\default\form\text-bg.gif" />
+    <Content Include="images\default\form\trigger-square.gif" />
+    <Content Include="images\default\form\trigger-tpl.gif" />
+    <Content Include="images\default\form\trigger.gif" />
+    <Content Include="images\default\gradient-bg.gif" />
+    <Content Include="images\default\grid\arrow-left-white.gif" />
+    <Content Include="images\default\grid\arrow-right-white.gif" />
+    <Content Include="images\default\grid\col-move-bottom.gif" />
+    <Content Include="images\default\grid\col-move-top.gif" />
+    <Content Include="images\default\grid\columns.gif" />
+    <Content Include="images\default\grid\dirty.gif" />
+    <Content Include="images\default\grid\done.gif" />
+    <Content Include="images\default\grid\drop-no.gif" />
+    <Content Include="images\default\grid\drop-yes.gif" />
+    <Content Include="images\default\grid\footer-bg.gif" />
+    <Content Include="images\default\grid\grid-blue-hd.gif" />
+    <Content Include="images\default\grid\grid-blue-split.gif" />
+    <Content Include="images\default\grid\grid-hrow.gif" />
+    <Content Include="images\default\grid\grid-loading.gif" />
+    <Content Include="images\default\grid\grid-split.gif" />
+    <Content Include="images\default\grid\grid-vista-hd.gif" />
+    <Content Include="images\default\grid\grid3-hd-btn.gif" />
+    <Content Include="images\default\grid\grid3-hrow-over.gif" />
+    <Content Include="images\default\grid\grid3-hrow.gif" />
+    <Content Include="images\default\grid\grid3-rowheader.gif" />
+    <Content Include="images\default\grid\grid3-special-col-bg.gif" />
+    <Content Include="images\default\grid\grid3-special-col-sel-bg.gif" />
+    <Content Include="images\default\grid\group-by.gif" />
+    <Content Include="images\default\grid\group-collapse.gif" />
+    <Content Include="images\default\grid\group-expand-sprite.gif" />
+    <Content Include="images\default\grid\group-expand.gif" />
+    <Content Include="images\default\grid\hd-pop.gif" />
+    <Content Include="images\default\grid\hmenu-asc.gif" />
+    <Content Include="images\default\grid\hmenu-desc.gif" />
+    <Content Include="images\default\grid\hmenu-lock.gif" />
+    <Content Include="images\default\grid\hmenu-lock.png" />
+    <Content Include="images\default\grid\hmenu-unlock.gif" />
+    <Content Include="images\default\grid\hmenu-unlock.png" />
+    <Content Include="images\default\grid\invalid_line.gif" />
+    <Content Include="images\default\grid\loading.gif" />
+    <Content Include="images\default\grid\mso-hd.gif" />
+    <Content Include="images\default\grid\nowait.gif" />
+    <Content Include="images\default\grid\page-first-disabled.gif" />
+    <Content Include="images\default\grid\page-first.gif" />
+    <Content Include="images\default\grid\page-last-disabled.gif" />
+    <Content Include="images\default\grid\page-last.gif" />
+    <Content Include="images\default\grid\page-next-disabled.gif" />
+    <Content Include="images\default\grid\page-next.gif" />
+    <Content Include="images\default\grid\page-prev-disabled.gif" />
+    <Content Include="images\default\grid\page-prev.gif" />
+    <Content Include="images\default\grid\pick-button.gif" />
+    <Content Include="images\default\grid\refresh-disabled.gif" />
+    <Content Include="images\default\grid\refresh.gif" />
+    <Content Include="images\default\grid\row-check-sprite.gif" />
+    <Content Include="images\default\grid\row-expand-sprite.gif" />
+    <Content Include="images\default\grid\row-over.gif" />
+    <Content Include="images\default\grid\row-sel.gif" />
+    <Content Include="images\default\grid\sort-hd.gif" />
+    <Content Include="images\default\grid\sort_asc.gif" />
+    <Content Include="images\default\grid\sort_desc.gif" />
+    <Content Include="images\default\grid\wait.gif" />
+    <Content Include="images\default\layout\collapse.gif" />
+    <Content Include="images\default\layout\expand.gif" />
+    <Content Include="images\default\layout\gradient-bg.gif" />
+    <Content Include="images\default\layout\mini-bottom.gif" />
+    <Content Include="images\default\layout\mini-left.gif" />
+    <Content Include="images\default\layout\mini-right.gif" />
+    <Content Include="images\default\layout\mini-top.gif" />
+    <Content Include="images\default\layout\ns-collapse.gif" />
+    <Content Include="images\default\layout\ns-expand.gif" />
+    <Content Include="images\default\layout\panel-close.gif" />
+    <Content Include="images\default\layout\panel-title-bg.gif" />
+    <Content Include="images\default\layout\panel-title-light-bg.gif" />
+    <Content Include="images\default\layout\stick.gif" />
+    <Content Include="images\default\layout\stuck.gif" />
+    <Content Include="images\default\layout\tab-close-on.gif" />
+    <Content Include="images\default\layout\tab-close.gif" />
+    <Content Include="images\default\menu\checked.gif" />
+    <Content Include="images\default\menu\group-checked.gif" />
+    <Content Include="images\default\menu\item-over.gif" />
+    <Content Include="images\default\menu\menu-parent.gif" />
+    <Content Include="images\default\menu\menu.gif" />
+    <Content Include="images\default\menu\unchecked.gif" />
+    <Content Include="images\default\panel\corners-sprite.gif" />
+    <Content Include="images\default\panel\left-right.gif" />
+    <Content Include="images\default\panel\light-hd.gif" />
+    <Content Include="images\default\panel\tool-sprite-tpl.gif" />
+    <Content Include="images\default\panel\tool-sprites.gif" />
+    <Content Include="images\default\panel\tools-sprites-trans.gif" />
+    <Content Include="images\default\panel\top-bottom.gif" />
+    <Content Include="images\default\panel\top-bottom.png" />
+    <Content Include="images\default\panel\white-corners-sprite.gif" />
+    <Content Include="images\default\panel\white-left-right.gif" />
+    <Content Include="images\default\panel\white-top-bottom.gif" />
+    <Content Include="images\default\progress\progress-bg.gif" />
+    <Content Include="images\default\qtip\bg.gif" />
+    <Content Include="images\default\qtip\close.gif" />
+    <Content Include="images\default\qtip\tip-anchor-sprite.gif" />
+    <Content Include="images\default\qtip\tip-sprite.gif" />
+    <Content Include="images\default\s.gif" />
+    <Content Include="images\default\shadow-c.png" />
+    <Content Include="images\default\shadow-lr.png" />
+    <Content Include="images\default\shadow.png" />
+    <Content Include="images\default\shared\blue-loading.gif" />
+    <Content Include="images\default\shared\calendar.gif" />
+    <Content Include="images\default\shared\glass-bg.gif" />
+    <Content Include="images\default\shared\hd-sprite.gif" />
+    <Content Include="images\default\shared\large-loading.gif" />
+    <Content Include="images\default\shared\left-btn.gif" />
+    <Content Include="images\default\shared\loading-balls.gif" />
+    <Content Include="images\default\shared\right-btn.gif" />
+    <Content Include="images\default\shared\warning.gif" />
+    <Content Include="images\default\sizer\e-handle-dark.gif" />
+    <Content Include="images\default\sizer\e-handle.gif" />
+    <Content Include="images\default\sizer\ne-handle-dark.gif" />
+    <Content Include="images\default\sizer\ne-handle.gif" />
+    <Content Include="images\default\sizer\nw-handle-dark.gif" />
+    <Content Include="images\default\sizer\nw-handle.gif" />
+    <Content Include="images\default\sizer\s-handle-dark.gif" />
+    <Content Include="images\default\sizer\s-handle.gif" />
+    <Content Include="images\default\sizer\se-handle-dark.gif" />
+    <Content Include="images\default\sizer\se-handle.gif" />
+    <Content Include="images\default\sizer\square.gif" />
+    <Content Include="images\default\sizer\sw-handle-dark.gif" />
+    <Content Include="images\default\sizer\sw-handle.gif" />
+    <Content Include="images\default\slider\slider-bg.png" />
+    <Content Include="images\default\slider\slider-thumb.png" />
+    <Content Include="images\default\slider\slider-v-bg.png" />
+    <Content Include="images\default\slider\slider-v-thumb.png" />
+    <Content Include="images\default\tabs\scroll-left.gif" />
+    <Content Include="images\default\tabs\scroll-right.gif" />
+    <Content Include="images\default\tabs\scroller-bg.gif" />
+    <Content Include="images\default\tabs\tab-btm-inactive-left-bg.gif" />
+    <Content Include="images\default\tabs\tab-btm-inactive-right-bg.gif" />
+    <Content Include="images\default\tabs\tab-btm-left-bg.gif" />
+    <Content Include="images\default\tabs\tab-btm-over-left-bg.gif" />
+    <Content Include="images\default\tabs\tab-btm-over-right-bg.gif" />
+    <Content Include="images\default\tabs\tab-btm-right-bg.gif" />
+    <Content Include="images\default\tabs\tab-close.gif" />
+    <Content Include="images\default\tabs\tab-strip-bg.gif" />
+    <Content Include="images\default\tabs\tab-strip-bg.png" />
+    <Content Include="images\default\tabs\tab-strip-btm-bg.gif" />
+    <Content Include="images\default\tabs\tabs-sprite.gif" />
+    <Content Include="images\default\toolbar\bg.gif" />
+    <Content Include="images\default\toolbar\btn-arrow-light.gif" />
+    <Content Include="images\default\toolbar\btn-arrow.gif" />
+    <Content Include="images\default\toolbar\btn-over-bg.gif" />
+    <Content Include="images\default\toolbar\gray-bg.gif" />
+    <Content Include="images\default\toolbar\more.gif" />
+    <Content Include="images\default\toolbar\tb-bg.gif" />
+    <Content Include="images\default\toolbar\tb-btn-sprite.gif" />
+    <Content Include="images\default\toolbar\tb-xl-btn-sprite.gif" />
+    <Content Include="images\default\toolbar\tb-xl-sep.gif" />
+    <Content Include="images\default\tree\arrows.gif" />
+    <Content Include="images\default\tree\drop-add.gif" />
+    <Content Include="images\default\tree\drop-between.gif" />
+    <Content Include="images\default\tree\drop-no.gif" />
+    <Content Include="images\default\tree\drop-over.gif" />
+    <Content Include="images\default\tree\drop-under.gif" />
+    <Content Include="images\default\tree\drop-yes.gif" />
+    <Content Include="images\default\tree\elbow-end-minus-nl.gif" />
+    <Content Include="images\default\tree\elbow-end-minus.gif" />
+    <Content Include="images\default\tree\elbow-end-plus-nl.gif" />
+    <Content Include="images\default\tree\elbow-end-plus.gif" />
+    <Content Include="images\default\tree\elbow-end.gif" />
+    <Content Include="images\default\tree\elbow-line.gif" />
+    <Content Include="images\default\tree\elbow-minus-nl.gif" />
+    <Content Include="images\default\tree\elbow-minus.gif" />
+    <Content Include="images\default\tree\elbow-plus-nl.gif" />
+    <Content Include="images\default\tree\elbow-plus.gif" />
+    <Content Include="images\default\tree\elbow.gif" />
+    <Content Include="images\default\tree\folder-open.gif" />
+    <Content Include="images\default\tree\folder.gif" />
+    <Content Include="images\default\tree\leaf.gif" />
+    <Content Include="images\default\tree\loading.gif" />
+    <Content Include="images\default\tree\s.gif" />
+    <Content Include="images\default\window\icon-error.gif" />
+    <Content Include="images\default\window\icon-info.gif" />
+    <Content Include="images\default\window\icon-question.gif" />
+    <Content Include="images\default\window\icon-warning.gif" />
+    <Content Include="images\default\window\left-corners.png" />
+    <Content Include="images\default\window\left-right.png" />
+    <Content Include="images\default\window\right-corners.png" />
+    <Content Include="images\default\window\top-bottom.png" />
+    <Content Include="images\gray\button\btn-arrow.gif" />
+    <Content Include="images\gray\button\btn-sprite.gif" />
+    <Content Include="images\gray\button\btn.gif" />
+    <Content Include="images\gray\button\group-cs.gif" />
+    <Content Include="images\gray\button\group-lr.gif" />
+    <Content Include="images\gray\button\group-tb.gif" />
+    <Content Include="images\gray\button\s-arrow-bo.gif" />
+    <Content Include="images\gray\button\s-arrow-o.gif" />
+    <Content Include="images\gray\form\clear-trigger.gif" />
+    <Content Include="images\gray\form\date-trigger.gif" />
+    <Content Include="images\gray\form\search-trigger.gif" />
+    <Content Include="images\gray\form\trigger-square.gif" />
+    <Content Include="images\gray\form\trigger.gif" />
+    <Content Include="images\gray\gradient-bg.gif" />
+    <Content Include="images\gray\grid\col-move-bottom.gif" />
+    <Content Include="images\gray\grid\col-move-top.gif" />
+    <Content Include="images\gray\grid\grid3-hd-btn.gif" />
+    <Content Include="images\gray\grid\grid3-hrow-over.gif" />
+    <Content Include="images\gray\grid\grid3-hrow-over2.gif" />
+    <Content Include="images\gray\grid\grid3-hrow.gif" />
+    <Content Include="images\gray\grid\grid3-hrow2.gif" />
+    <Content Include="images\gray\grid\grid3-special-col-bg.gif" />
+    <Content Include="images\gray\grid\grid3-special-col-bg2.gif" />
+    <Content Include="images\gray\grid\grid3-special-col-sel-bg.gif" />
+    <Content Include="images\gray\grid\group-collapse.gif" />
+    <Content Include="images\gray\grid\group-expand-sprite.gif" />
+    <Content Include="images\gray\grid\group-expand.gif" />
+    <Content Include="images\gray\grid\page-first.gif" />
+    <Content Include="images\gray\grid\page-last.gif" />
+    <Content Include="images\gray\grid\page-next.gif" />
+    <Content Include="images\gray\grid\page-prev.gif" />
+    <Content Include="images\gray\grid\refresh.gif" />
+    <Content Include="images\gray\grid\row-expand-sprite.gif" />
+    <Content Include="images\gray\grid\sort_asc.gif" />
+    <Content Include="images\gray\grid\sort_desc.gif" />
+    <Content Include="images\gray\menu\group-checked.gif" />
+    <Content Include="images\gray\menu\item-over-disabled.gif" />
+    <Content Include="images\gray\menu\item-over.gif" />
+    <Content Include="images\gray\menu\menu-parent.gif" />
+    <Content Include="images\gray\panel\corners-sprite.gif" />
+    <Content Include="images\gray\panel\left-right.gif" />
+    <Content Include="images\gray\panel\light-hd.gif" />
+    <Content Include="images\gray\panel\tool-sprite-tpl.gif" />
+    <Content Include="images\gray\panel\tool-sprites.gif" />
+    <Content Include="images\gray\panel\tools-sprites-trans.gif" />
+    <Content Include="images\gray\panel\top-bottom.gif" />
+    <Content Include="images\gray\panel\top-bottom.png" />
+    <Content Include="images\gray\panel\white-corners-sprite.gif" />
+    <Content Include="images\gray\panel\white-left-right.gif" />
+    <Content Include="images\gray\panel\white-top-bottom.gif" />
+    <Content Include="images\gray\progress\progress-bg.gif" />
+    <Content Include="images\gray\qtip\bg.gif" />
+    <Content Include="images\gray\qtip\close.gif" />
+    <Content Include="images\gray\qtip\tip-anchor-sprite.gif" />
+    <Content Include="images\gray\qtip\tip-sprite.gif" />
+    <Content Include="images\gray\s.gif" />
+    <Content Include="images\gray\shared\hd-sprite.gif" />
+    <Content Include="images\gray\shared\left-btn.gif" />
+    <Content Include="images\gray\shared\right-btn.gif" />
+    <Content Include="images\gray\sizer\e-handle.gif" />
+    <Content Include="images\gray\sizer\ne-handle.gif" />
+    <Content Include="images\gray\sizer\nw-handle.gif" />
+    <Content Include="images\gray\sizer\s-handle.gif" />
+    <Content Include="images\gray\sizer\se-handle.gif" />
+    <Content Include="images\gray\sizer\square.gif" />
+    <Content Include="images\gray\sizer\sw-handle.gif" />
+    <Content Include="images\gray\slider\slider-thumb.png" />
+    <Content Include="images\gray\slider\slider-v-thumb.png" />
+    <Content Include="images\gray\tabs\scroll-left.gif" />
+    <Content Include="images\gray\tabs\scroll-right.gif" />
+    <Content Include="images\gray\tabs\scroller-bg.gif" />
+    <Content Include="images\gray\tabs\tab-btm-inactive-left-bg.gif" />
+    <Content Include="images\gray\tabs\tab-btm-inactive-right-bg.gif" />
+    <Content Include="images\gray\tabs\tab-btm-left-bg.gif" />
+    <Content Include="images\gray\tabs\tab-btm-over-left-bg.gif" />
+    <Content Include="images\gray\tabs\tab-btm-over-right-bg.gif" />
+    <Content Include="images\gray\tabs\tab-btm-right-bg.gif" />
+    <Content Include="images\gray\tabs\tab-close.gif" />
+    <Content Include="images\gray\tabs\tab-strip-bg.gif" />
+    <Content Include="images\gray\tabs\tab-strip-bg.png" />
+    <Content Include="images\gray\tabs\tab-strip-btm-bg.gif" />
+    <Content Include="images\gray\tabs\tabs-sprite.gif" />
+    <Content Include="images\gray\toolbar\bg.gif" />
+    <Content Include="images\gray\toolbar\btn-arrow-light.gif" />
+    <Content Include="images\gray\toolbar\btn-arrow.gif" />
+    <Content Include="images\gray\toolbar\btn-over-bg.gif" />
+    <Content Include="images\gray\toolbar\gray-bg.gif" />
+    <Content Include="images\gray\toolbar\more.gif" />
+    <Content Include="images\gray\toolbar\tb-bg.gif" />
+    <Content Include="images\gray\toolbar\tb-btn-sprite.gif" />
+    <Content Include="images\gray\tree\arrows.gif" />
+    <Content Include="images\gray\tree\elbow-end-minus-nl.gif" />
+    <Content Include="images\gray\tree\elbow-end-minus.gif" />
+    <Content Include="images\gray\tree\elbow-end-plus-nl.gif" />
+    <Content Include="images\gray\tree\elbow-end-plus.gif" />
+    <Content Include="images\gray\window\icon-error.gif" />
+    <Content Include="images\gray\window\icon-info.gif" />
+    <Content Include="images\gray\window\icon-question.gif" />
+    <Content Include="images\gray\window\icon-warning.gif" />
+    <Content Include="images\gray\window\left-corners.png" />
+    <Content Include="images\gray\window\left-right.png" />
+    <Content Include="images\gray\window\right-corners.png" />
+    <Content Include="images\gray\window\top-bottom.png" />
+    <Content Include="img\ajax-loader-bar.gif" />
+    <Content Include="img\ico_MultiExchange.gif" />
+    <Content Include="img\ico_setMainVersion.gif" />
+    <Content Include="img\spinfox.png" />
+    <Content Include="Json\DictsPropsTree.aspx" />
+    <Content Include="Json\ExchangeConfiguration.aspx" />
+    <Content Include="Json\SearchByConditions.aspx" />
+    <Content Include="Json\UsageConfigurations.aspx" />
+    <Content Include="Loging\View.aspx" />
+    <Content Include="Popup\SelectTreeClass.aspx" />
+    <Content Include="scripts\extjs\adapter\ext\ext-base.js" />
+    <Content Include="scripts\extjs\adapter\jquery\ext-jquery-adapter.js" />
+    <Content Include="scripts\extjs\Application.ComboTree.js" />
+    <Content Include="scripts\extjs\Application.SearchForm.js" />
+    <Content Include="scripts\extjs\ext-all.js" />
+    <Content Include="scripts\extjs\ux\CheckColumn.js" />
+    <Content Include="scripts\jquery-ext.js" />
+    <Content Include="scripts\Silverlight.js" />
+    <Content Include="Technology\TreeWithKmh.aspx" />
+    <Content Include="Tools\MultiExchange.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\default\form\clear-trigger.psd" />
+    <None Include="images\default\form\date-trigger.psd" />
+    <None Include="images\default\form\search-trigger.psd" />
+    <None Include="images\default\form\trigger-square.psd" />
+    <None Include="images\default\form\trigger.psd" />
+    <None Include="images\default\window\left-corners.psd" />
+    <None Include="images\default\window\left-right.psd" />
+    <None Include="images\default\window\right-corners.psd" />
+    <None Include="images\default\window\top-bottom.psd" />
+    <Content Include="Technology\UniGrid.aspx" />
+    <Content Include="Technology\UniGrid.xap">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="favicon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\toolbar.png" />
+    <Content Include="Technology\Apis.aspx" />
+    <Content Include="Technology\Applicability.xap">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Technology\Applicability.aspx" />
+    <Content Include="Technology\Buffer.aspx" />
+    <Content Include="Technology\EditorKmh.xap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Technology\ListWares.xap">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Technology\TreeWithKmh.xap">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Technology\EditorKmh.aspx" />
+    <Content Include="Technology\ListWares.aspx" />
+    <Content Include="Technology\Service.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>5000</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
